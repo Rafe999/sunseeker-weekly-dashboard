@@ -24,3 +24,10 @@ Sales、Units、Daily Run Rate、Sessions、CVR、Ad Spend、Ad Sales、ACOS、T
 
 ## Deployment trigger
 Pages refresh triggered on 2026-07-22 after repository visibility and branch-source setup were confirmed.
+
+## 差评洞察看板
+
+Robot Lawn Mower 低星评论可视化已加入 [review-dashboard](./review-dashboard/)：支持 X3 Plus、S4、X7、X5 品线筛选，展示问题覆盖率、星级结构、产品风险矩阵以及 Current / Target / Gap / Action 行动方案。
+
+- 在线地址：https://rafe999.github.io/sunseeker-weekly-dashboard/review-dashboard/
+- 数据口径：30 行低星评论，按行统计且未去重；一条评论可命中多个问题类别。
