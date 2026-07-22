@@ -11,13 +11,16 @@ Sunseeker美国亚马逊站7月销售与广告可视化看板。
 Sales、Units、Daily Run Rate、Sessions、CVR、Ad Spend、Ad Sales、ACOS、TACOS、ASOAS，以及销量变化贡献拆解。
 
 ## GitHub Pages发布
-仓库改为Public后，在 `Settings → Pages` 中选择：
+仓库为Public，并从以下位置发布：
 
 - Source：Deploy from a branch
 - Branch：main
 - Folder：/(root)
 
-保存后，根目录的 `index.html` 会自动发布，不需要手动运行Workflow。
+根目录的 `index.html` 会自动发布，不需要手动运行Workflow。
 
 ## 更新方式
 看板当前为自包含静态页面。更新By Day数据后，替换 `index.html` 中的数据并推送到 `main`，Pages会自动刷新。
+
+## Deployment trigger
+Pages refresh triggered on 2026-07-22 after repository visibility and branch-source setup were confirmed.
