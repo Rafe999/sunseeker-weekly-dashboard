@@ -10,8 +10,14 @@ Sunseeker美国亚马逊站7月销售与广告可视化看板。
 ## 指标
 Sales、Units、Daily Run Rate、Sessions、CVR、Ad Spend、Ad Sales、ACOS、TACOS、ASOAS，以及销量变化贡献拆解。
 
-## 更新方式
-看板数据保存在 `dashboard-data.js`。更新By Day Excel后，重新生成该文件并推送到 `main`，GitHub Actions将自动发布GitHub Pages。
+## GitHub Pages发布
+仓库改为Public后，在 `Settings → Pages` 中选择：
 
-## Pages
-在 Settings → Pages 中将 Source 设置为 GitHub Actions。
+- Source：Deploy from a branch
+- Branch：main
+- Folder：/(root)
+
+保存后，根目录的 `index.html` 会自动发布，不需要手动运行Workflow。
+
+## 更新方式
+看板当前为自包含静态页面。更新By Day数据后，替换 `index.html` 中的数据并推送到 `main`，Pages会自动刷新。
