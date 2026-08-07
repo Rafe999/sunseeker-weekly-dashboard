@@ -31,3 +31,11 @@ Robot Lawn Mower 低星评论可视化已加入 [review-dashboard](./review-dash
 
 - 在线地址：https://rafe999.github.io/sunseeker-weekly-dashboard/review-dashboard/
 - 数据口径：30 行低星评论，按行统计且未去重；一条评论可命中多个问题类别。
+
+## SC 仓储费 & 超龄附加费看板
+
+SC Robot Mower 仓储成本可视化已加入 [storage-dashboard](./storage-dashboard/)：展示 By 月仓储费、By 月超龄附加费、By 品线成本结构、当前库龄风险、V3 移除回收期与清仓 Action Plan。
+
+- 在线地址：https://rafe999.github.io/sunseeker-weekly-dashboard/storage-dashboard/
+- 仓储费口径：Amazon 原生字段 `estimated_monthly_storage_fee`
+- 数据范围：仓储费 Jan–Jun 2026；超龄附加费 Jan–Jul 2026
