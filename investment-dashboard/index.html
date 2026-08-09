@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>科技基金预测 vs 实际看板</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#0b1020;--card:#121a2f;--muted:#8fa0bd;--text:#eef3ff;--line:#25304b;--good:#35c48d;--bad:#ff6b6b;--warn:#f6c85f;--accent:#6ea8fe}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.wrap{max-width:1280px;margin:auto;padding:28px}.head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:18px}.head h1{margin:0;font-size:28px}.sub{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.kpi{font-size:26px;font-weight:700;margin-top:6px}.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}.section{margin-top:18px}.section h2{font-size:18px;margin:0 0 10px}.two{display:grid;grid-template-columns:1.15fr .85fr;gap:12px}.chart{height:340px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:collapse;background:var(--card);min-width:900px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}th{color:#b9c6de;font-weight:600;background:#10182b}tr:last-child td{border-bottom:none}.pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#1c2742;color:#c9d6ee}.note{color:var(--muted);font-size:12px}.rules{margin:0;padding-left:18px}.rules li{margin:7px 0}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.btn{border:1px solid var(--line);background:#111a2f;color:var(--text);padding:7px 10px;border-radius:9px;cursor:pointer}.btn.active{border-color:var(--accent);color:#fff}.footer{margin:24px 0 8px;color:var(--muted);font-size:12px}@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.wrap{padding:16px}}@media(max-width:560px){.grid{grid-template-columns:1fr}.head{align-items:flex-start;flex-direction:column}.head h1{font-size:23px}}
+</style>
+</head>
+<body><div class="wrap">
+<div class="head"><div><h1>科技基金预测 vs 实际看板</h1><div class="sub">025500｜024481｜024975 · 2026/08/10–08/14</div></div><div class="sub" id="updated"></div></div>
+<div class="grid" id="kpis"></div>
+
+<div class="section two">
+  <div class="card"><h2>组合周度情景</h2><div class="chart"><canvas id="scenarioChart"></canvas></div></div>
+  <div class="card"><h2>当前持仓结构</h2><div class="chart"><canvas id="holdingChart"></canvas></div></div>
+</div>
+
+<div class="section"><h2>基金预测与实际</h2><div class="table-wrap"><table><thead><tr><th>代码</th><th>中文名称</th><th>方向</th><th>持仓</th><th>基准周预测</th><th>乐观</th><th>悲观</th><th>最新实际净值</th><th>预测误差</th><th>操作建议</th></tr></thead><tbody id="fundRows"></tbody></table></div></div>
+
+<div class="section two">
+  <div class="card"><h2>日度预测 vs 实际</h2><div class="controls" id="fundButtons"></div><div class="chart"><canvas id="navChart"></canvas></div></div>
+  <div class="card"><h2>加减仓规则</h2><ul class="rules" id="rules"></ul><div class="note">预测是概率情景，不是收益承诺；实际净值将在交易日收盘后更新。</div></div>
+</div>
+
+<div class="section"><h2>分档加仓方案</h2><div class="controls" id="cashButtons"></div><div class="table-wrap"><table><thead><tr><th>阶段</th><th>时间</th><th>触发条件</th><th>024975 华泰柏瑞科创半导体材料设备联接C</th><th>024481 财通品质甄选混合C</th><th>025500 东方阿尔法科技智选混合发起C</th></tr></thead><tbody id="cashRows"></tbody></table></div></div>
+<div class="footer">Data source: GitHub JSON files in this dashboard directory. Actual values are updated after A-share trading days.</div>
+</div>
+<script>
+let F,A,C,navChart;
+const fmt=n=>Number(n).toLocaleString('zh-CN',{maximumFractionDigits:2});
+async function init(){
+  [F,A,C]=await Promise.all([fetch('./data/forecast.json').then(r=>r.json()),fetch('./data/actual.json').then(r=>r.json()),fetch('./data/cash-plan.json').then(r=>r.json())]);
+  document.getElementById('updated').textContent='预测生成：'+new Date(F.generatedAt).toLocaleString('zh-CN');
+  renderKpis();renderScenarios();renderHoldings();renderFundTable();renderRules();renderFundButtons();renderCashButtons(10000);selectFund(F.funds[0].code);
+}
+function renderKpis(){const p=F.portfolioScenario,c=F.capital;const items=[['当前持仓','¥'+fmt(c.invested)],['现金','¥'+fmt(c.cash)],['基准周预测',(p.base>0?'+':'')+p.base+'%'],['悲观情景',p.bear+'%']];document.getElementById('kpis').innerHTML=items.map(x=>`<div class="card"><div class="sub">${x[0]}</div><div class="kpi">${x[1]}</div></div>`).join('')}
+function renderScenarios(){new Chart(document.getElementById('scenarioChart'),{type:'bar',data:{labels:['悲观','基准','乐观'],datasets:[{label:'组合周涨跌幅 %',data:[F.portfolioScenario.bear,F.portfolioScenario.base,F.portfolioScenario.bull]}]},options:{maintainAspectRatio:false,plugins:{legend:{labels:{color:'#dce6fa'}}},scales:{x:{ticks:{color:'#aebbd3'},grid:{color:'#25304b'}},y:{ticks:{color:'#aebbd3'},grid:{color:'#25304b'}}}}})}
+function renderHoldings(){new Chart(document.getElementById('holdingChart'),{type:'doughnut',data:{labels:F.funds.map(x=>x.code+' '+x.name),datasets:[{data:F.funds.map(x=>x.holding)}]},options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#dce6fa',boxWidth:12}}}}})}
+function latestActual(code){return A.records.filter(x=>x.code===code).sort((a,b)=>a.date.localeCompare(b.date)).at(-1)}
+function forecastFor(code,date){return F.funds.find(x=>x.code===code).forecast.find(x=>x.date===date)}
+function actionFor(f){if(f.code==='024975')return '核心底仓优先加';if(f.code==='024481')return '确认趋势后加，急涨可锁利润';return '存储弹性仓，回踩再补';}
+function renderFundTable(){document.getElementById('fundRows').innerHTML=F.funds.map(f=>{const a=latestActual(f.code);let err='待更新';if(a){const fp=forecastFor(f.code,a.date);if(fp)err=((a.actualNav-fp.base)/fp.base*100).toFixed(2)+'%'}return `<tr><td><b>${f.code}</b></td><td>${f.name}</td><td><span class="pill">${f.exposure}</span></td><td>¥${fmt(f.holding)}</td><td class="good">+${f.weeklyScenario.base}%</td><td class="good">+${f.weeklyScenario.bull}%</td><td class="bad">${f.weeklyScenario.bear}%</td><td>${a?Number(a.actualNav).toFixed(4):'待更新'}</td><td>${err}</td><td>${actionFor(f)}</td></tr>`}).join('')}
+function renderRules(){document.getElementById('rules').innerHTML=F.rules.map(x=>`<li>${x}</li>`).join('')}
+function renderFundButtons(){document.getElementById('fundButtons').innerHTML=F.funds.map(x=>`<button class="btn" data-code="${x.code}" onclick="selectFund('${x.code}')">${x.code} ${x.name}</button>`).join('')}
+function selectFund(code){document.querySelectorAll('#fundButtons .btn').forEach(b=>b.classList.toggle('active',b.dataset.code===code));const f=F.funds.find(x=>x.code===code);const actualMap=Object.fromEntries(A.records.filter(x=>x.code===code).map(x=>[x.date,x.actualNav]));const labels=f.forecast.map(x=>x.date.slice(5));const data={labels,datasets:[{label:'基准预测',data:f.forecast.map(x=>x.base),borderWidth:2,tension:.25},{label:'乐观',data:f.forecast.map(x=>x.bull),borderDash:[5,5],borderWidth:1.5},{label:'悲观',data:f.forecast.map(x=>x.bear),borderDash:[5,5],borderWidth:1.5},{label:'实际',data:f.forecast.map(x=>actualMap[x.date]??null),borderWidth:3,tension:.2}]};if(navChart)navChart.destroy();navChart=new Chart(document.getElementById('navChart'),{type:'line',data,options:{maintainAspectRatio:false,plugins:{legend:{labels:{color:'#dce6fa'}}},scales:{x:{ticks:{color:'#aebbd3'},grid:{color:'#25304b'}},y:{ticks:{color:'#aebbd3'},grid:{color:'#25304b'}}}}})}
+function renderCashButtons(total){document.getElementById('cashButtons').innerHTML=[5000,10000,20000].map(x=>`<button class="btn ${x===total?'active':''}" onclick="renderCashButtons(${x})">追加 ¥${fmt(x)}</button>`).join('');document.getElementById('cashRows').innerHTML=C.plans.filter(x=>x.total===total).map(p=>`<tr><td>${p.stage}</td><td>${p.timing}</td><td>${p.trigger}</td><td>¥${fmt(p.allocations['024975'])}</td><td>¥${fmt(p.allocations['024481'])}</td><td>¥${fmt(p.allocations['025500'])}</td></tr>`).join('')}
+init().catch(e=>document.body.innerHTML='<pre style="color:white;padding:30px">Dashboard load error: '+e+'</pre>');
+</script></body></html>
