@@ -39,3 +39,12 @@ SC Robot Mower 仓储成本可视化已加入 [storage-dashboard](./storage-dash
 - 在线地址：https://rafe999.github.io/sunseeker-weekly-dashboard/storage-dashboard/
 - 仓储费口径：Amazon 原生字段 `estimated_monthly_storage_fee`
 - 数据范围：仓储费 Jan–Jun 2026；超龄附加费 Jan–Jul 2026
+
+## 科技基金预测 vs 实际看板
+
+新增 [investment-dashboard](./investment-dashboard/)：跟踪 025500 东方阿尔法科技智选混合发起C、024481 财通品质甄选混合C、024975 华泰柏瑞上证科创板半导体材料设备主题ETF发起式联接C。
+
+- 在线地址：https://rafe999.github.io/sunseeker-weekly-dashboard/investment-dashboard/
+- 内容：当前持仓、周度悲观/基准/乐观情景、日度预测净值、实际净值、预测误差、CPO/PCB/存储/半导体观察、分档加减仓方案
+- 数据文件：`investment-dashboard/data/forecast.json`、`actual.json`、`cash-plan.json`
+- 更新方式：交易日收盘后更新实际净值与预测误差，Pages自动刷新
