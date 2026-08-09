@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-09T16:33:00+08:00",
+  "updatedAt": "2026-08-09T16:39:00+08:00",
   "records": [],
-  "note": "A股交易日收盘后更新。字段包括 date, code, name, actualNav, dailyChangePct, sectorNote, action, sourceDate。"
+  "note": "A股交易日收盘后更新。每条记录包含 date, code, name, actualNav, dailyChangePct, dailyChangeValue, holdingPnl, predictionErrorNav, predictionErrorPct, sectorNote, action, sourceDate。dailyChangeValue 为当日单位净值变动值；holdingPnl 为按当前持仓金额估算的当日盈亏金额。"
 }
