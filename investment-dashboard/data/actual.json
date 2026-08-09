@@ -1,0 +1,5 @@
+{
+  "updatedAt": "2026-08-09T16:33:00+08:00",
+  "records": [],
+  "note": "A股交易日收盘后更新。字段包括 date, code, name, actualNav, dailyChangePct, sectorNote, action, sourceDate。"
+}
