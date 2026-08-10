@@ -1,5 +1,21 @@
 {
-  "updatedAt": "2026-08-09T16:39:00+08:00",
+  "updatedAt": "2026-08-10T17:09:00+08:00",
+  "officialNavStatus": "pending",
   "records": [],
-  "note": "A股交易日收盘后更新。每条记录包含 date, code, name, actualNav, dailyChangePct, dailyChangeValue, holdingPnl, predictionErrorNav, predictionErrorPct, sectorNote, action, sourceDate。dailyChangeValue 为当日单位净值变动值；holdingPnl 为按当前持仓金额估算的当日盈亏金额。"
+  "sessions": [
+    {
+      "date": "2026-08-10",
+      "marketClosed": true,
+      "officialNavPending": true,
+      "userAction": "no_add",
+      "holdingChanged": false,
+      "holdings": {
+        "025500": 3300,
+        "024481": 3000,
+        "024975": 2000
+      },
+      "note": "A股已收盘；17:09时三只场外基金的2026-08-10官方单位净值尚未全部发布。看板可显示15:00收盘估值作为临时参考，但不得标记为官方实际值。用户今日未加仓。"
+    }
+  ],
+  "note": "A股交易日收盘后更新。官方实际记录包含 date, code, name, actualNav, dailyChangePct, dailyChangeValue, holdingPnl, predictionErrorNav, predictionErrorPct, sectorNote, action, sourceDate。dailyChangeValue 为当日单位净值变动值；holdingPnl 为按当前持仓金额估算的当日盈亏金额。收盘估值与官方实际值必须分开展示。"
 }
