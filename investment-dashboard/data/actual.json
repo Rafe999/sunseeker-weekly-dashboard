@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-11T17:18:01+08:00",
+  "updatedAt": "2026-08-11T17:31:28+08:00",
   "officialNavStatus": "updated",
   "records": [
     {
@@ -10,7 +10,8 @@
       "previousNav": 1.9624,
       "dailyChangePct": -0.11,
       "dailyChangeValue": -0.0022,
-      "holdingPnl": -3.3,
+      "holdingPnl": -3.36,
+      "sharesUsed": 1528.742,
       "predictionErrorNav": -0.0145,
       "predictionErrorPct": -0.7343,
       "sectorNote": "CPO / PCB",
@@ -26,7 +27,8 @@
       "previousNav": 2.5146,
       "dailyChangePct": 3.3,
       "dailyChangeValue": 0.0831,
-      "holdingPnl": 66.0,
+      "holdingPnl": 68.77,
+      "sharesUsed": 827.609,
       "predictionErrorNav": 0.0718,
       "predictionErrorPct": 2.8426,
       "sectorNote": "半导体设备 / 材料",
@@ -42,7 +44,8 @@
       "previousNav": 1.6436,
       "dailyChangePct": -1.25,
       "dailyChangeValue": -0.0205,
-      "holdingPnl": -41.25,
+      "holdingPnl": -41.37,
+      "sharesUsed": 2018.0272,
       "predictionErrorNav": -0.0267,
       "predictionErrorPct": -1.6184,
       "sectorNote": "存储 / 半导体设计",
