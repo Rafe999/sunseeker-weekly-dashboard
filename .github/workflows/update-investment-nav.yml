@@ -19,64 +19,52 @@ jobs:
       - name: Fetch confirmed NAV and update dashboard data
         shell: python
         run: |
-          import json, re, urllib.request, pathlib, datetime
+          import json, urllib.request, urllib.parse, pathlib, datetime
           root = pathlib.Path('investment-dashboard/data')
-          forecast_path = root / 'forecast.json'
-          actual_path = root / 'actual.json'
-          F = json.loads(forecast_path.read_text(encoding='utf-8'))
-          A = json.loads(actual_path.read_text(encoding='utf-8'))
+          F = json.loads((root/'forecast.json').read_text(encoding='utf-8'))
+          A = json.loads((root/'actual.json').read_text(encoding='utf-8'))
           by_code = {f['code']: f for f in F['funds']}
-          existing = {(r.get('date'), r.get('code')): r for r in A.get('records', [])}
-          headers = {'User-Agent':'Mozilla/5.0','Referer':'https://fund.eastmoney.com/'}
-          added = 0
-          for code, f in by_code.items():
-              req = urllib.request.Request(f'https://fundgz.1234567.com.cn/js/{code}.js?rt={int(datetime.datetime.now().timestamp()*1000)}', headers=headers)
-              txt = urllib.request.urlopen(req, timeout=15).read().decode('utf-8','ignore')
-              m = re.search(r'jsonpgz\((\{.*\})\);?', txt)
-              if not m:
-                  print(code, 'no JSONP payload'); continue
-              e = json.loads(m.group(1))
-              date = e.get('jzrq'); nav_s = e.get('dwjz')
-              if not date or not nav_s:
-                  print(code, 'missing jzrq/dwjz', e); continue
-              if not any(x.get('date') == date for x in f.get('forecast', [])):
-                  print(code, date, 'outside forecast window'); continue
-              nav = float(nav_s)
-              previous_nav = float(f['baseNav'])
-              prior_records = sorted([r for r in A.get('records',[]) if r.get('code')==code and r.get('date','') < date and r.get('actualNav') is not None], key=lambda x:x['date'])
-              if prior_records:
-                  previous_nav = float(prior_records[-1]['actualNav'])
-              daily_pct = (nav / previous_nav - 1) * 100
-              daily_value = nav - previous_nav
-              holding_pnl = float(f['holding']) * daily_pct / 100
-              fp = next(x for x in f['forecast'] if x['date']==date)
-              err_nav = nav - float(fp['base'])
-              err_pct = (nav / float(fp['base']) - 1) * 100
-              rec = {
-                  'date': date, 'code': code, 'name': f['name'], 'actualNav': round(nav,4),
-                  'previousNav': round(previous_nav,4), 'dailyChangePct': round(daily_pct,4),
-                  'dailyChangeValue': round(daily_value,4), 'holdingPnl': round(holding_pnl,2),
-                  'predictionErrorNav': round(err_nav,4), 'predictionErrorPct': round(err_pct,4),
-                  'sectorNote': f.get('exposure',''), 'action': 'hold/no_add' if date == '2026-08-10' else 'review',
-                  'sourceDate': date, 'source': 'fundgz.1234567.com.cn confirmed dwjz'
-              }
-              if (date, code) not in existing or existing[(date,code)].get('actualNav') != rec['actualNav']:
-                  existing[(date,code)] = rec; added += 1
-          A['records'] = sorted(existing.values(), key=lambda r:(r.get('date',''),r.get('code','')))
-          A['updatedAt'] = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(timespec='seconds')
-          if A.get('records'):
-              A['officialNavStatus'] = 'updated'
-          for s in A.get('sessions', []):
-              if s.get('date') and all((s['date'],c) in existing for c in by_code):
-                  s['officialNavPending'] = False
-          actual_path.write_text(json.dumps(A,ensure_ascii=False,indent=2),encoding='utf-8')
-          print('records updated:', added)
+          existing = {(r.get('date'),r.get('code')):r for r in A.get('records',[])}
+          qs = urllib.parse.urlencode({
+              'pageIndex':1,'pageSize':20,'plat':'Android','appType':'ttjj','product':'EFund',
+              'Version':'6.2.4','deviceid':'1','Fcodes':','.join(by_code)
+          })
+          url='https://fundmobapi.eastmoney.com/FundMNewApi/FundMNFInfo?'+qs
+          req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Referer':'https://fund.eastmoney.com/'})
+          payload=json.loads(urllib.request.urlopen(req,timeout=20).read().decode('utf-8'))
+          print('Success:',payload.get('Success'),'rows:',len(payload.get('Datas') or []))
+          added=0
+          for e in payload.get('Datas') or []:
+              code=e.get('FCODE'); date=e.get('PDATE'); nav_s=e.get('NAV')
+              if code not in by_code or not date or not nav_s: continue
+              f=by_code[code]
+              if not any(x.get('date')==date for x in f.get('forecast',[])):
+                  print(code,date,'outside forecast window'); continue
+              nav=float(nav_s)
+              prior=sorted([r for r in existing.values() if r.get('code')==code and r.get('date','')<date and r.get('actualNav') is not None],key=lambda r:r['date'])
+              previous_nav=float(prior[-1]['actualNav']) if prior else float(f['baseNav'])
+              daily_pct=float(e['NAVCHGRT']) if e.get('NAVCHGRT') not in (None,'','--') else (nav/previous_nav-1)*100
+              daily_value=nav-previous_nav
+              holding_pnl=float(f['holding'])*daily_pct/100
+              fp=next(x for x in f['forecast'] if x['date']==date)
+              err_nav=nav-float(fp['base']); err_pct=(nav/float(fp['base'])-1)*100
+              rec={'date':date,'code':code,'name':f['name'],'actualNav':round(nav,4),'previousNav':round(previous_nav,4),
+                   'dailyChangePct':round(daily_pct,4),'dailyChangeValue':round(daily_value,4),'holdingPnl':round(holding_pnl,2),
+                   'predictionErrorNav':round(err_nav,4),'predictionErrorPct':round(err_pct,4),'sectorNote':f.get('exposure',''),
+                   'action':'hold/no_add' if date=='2026-08-10' else 'review','sourceDate':date,
+                   'source':'fundmobapi.eastmoney.com FundMNFInfo'}
+              if existing.get((date,code))!=rec:
+                  existing[(date,code)]=rec; added+=1
+          A['records']=sorted(existing.values(),key=lambda r:(r.get('date',''),r.get('code','')))
+          A['updatedAt']=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(timespec='seconds')
+          A['officialNavStatus']='updated' if A['records'] else 'pending'
+          for s in A.get('sessions',[]):
+              if s.get('date') and all((s['date'],c) in existing for c in by_code): s['officialNavPending']=False
+          (root/'actual.json').write_text(json.dumps(A,ensure_ascii=False,indent=2),encoding='utf-8')
+          print('records updated:',added)
       - name: Commit data update
         run: |
-          if git diff --quiet -- investment-dashboard/data/actual.json; then
-            echo 'No NAV changes to commit'
-            exit 0
-          fi
+          if git diff --quiet -- investment-dashboard/data/actual.json; then echo 'No NAV changes to commit'; exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add investment-dashboard/data/actual.json
