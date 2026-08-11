@@ -3,55 +3,235 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Sunseeker Amazon DSP merged VC and SC performance dashboard">
-<title>Sunseeker Amazon DSP 周会看板</title>
+<meta name="description" content="Sunseeker Amazon DSP VC+SC merged performance analysis">
+<title>Sunseeker Amazon DSP 投放分析</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <style>
-:root{--ink:#13272e;--muted:#6d7e83;--line:#dfe8e5;--paper:#f4f7f5;--card:#fff;--green:#148564;--green2:#42b883;--navy:#112b32;--red:#d95752;--amber:#d99b32;--blue:#4f7f98;--shadow:0 12px 35px rgba(25,55,52,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.top{height:64px;background:var(--navy);color:#fff}.top-inner{max-width:1480px;height:100%;margin:auto;padding:0 30px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-weight:760}.mark{width:26px;height:26px;border:2px solid #61d9ab;border-radius:8px;position:relative;transform:rotate(45deg)}.mark:after{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:#61d9ab;top:7px;left:7px}.source{font-size:12px;color:#bdd0cc}.shell{max-width:1480px;margin:auto;padding:0 30px 56px}.hero{margin-top:26px;padding:32px 36px;border-radius:22px;color:#fff;background:linear-gradient(120deg,#112a31 0%,#173d3b 70%,#175a48 100%);box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}.eyebrow{text-transform:uppercase;letter-spacing:1.7px;color:#70e2b6;font-size:11px;font-weight:800}.hero h1{font-size:34px;line-height:1.15;margin:7px 0 10px}.hero p{margin:0;color:#c7d8d4;max-width:860px}.stamp{text-align:right;color:#b9cbc8;font-size:12px}.stamp strong{display:block;color:white;font-size:16px}.notice{margin:14px 0 18px;padding:13px 16px;border-radius:12px;border:1px solid #f0cf93;background:#fff7e7;color:#73581e}.notice strong{color:#523d10}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 16px}.filter{border:1px solid var(--line);background:#fff;color:#486068;border-radius:100px;padding:9px 16px;cursor:pointer;font-weight:650}.filter.active{background:#173d3b;color:#fff;border-color:#173d3b}.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.kpi,.panel{background:#fff;border:1px solid #e1eae7;border-radius:16px;box-shadow:0 5px 20px rgba(24,55,49,.04)}.kpi{padding:17px 18px}.kpi .label{color:var(--muted);font-size:12px}.kpi .num{font-size:29px;line-height:1.2;font-weight:800;margin:6px 0}.delta{font-size:12px;color:var(--muted)}.good{color:var(--green)}.bad{color:var(--red)}.warn{color:var(--amber)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.panel{padding:21px}.panel h2{font-size:17px;margin:0}.sub{color:var(--muted);font-size:12px;margin:3px 0 15px}.chart-box{height:300px}.callout{margin-top:14px;padding:15px 17px;border-left:4px solid var(--green);background:#eaf6f1;border-radius:0 12px 12px 0}.callout strong{display:block;margin-bottom:4px}.alert{border-left-color:var(--amber);background:#fff7e8}.danger{border-left-color:var(--red);background:#feeeee}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px;margin-top:13px}table{border-collapse:collapse;width:100%;min-width:1040px}th,td{padding:12px 13px;border-bottom:1px solid #e7eeeb;text-align:left;vertical-align:top}th{background:#f8faf9;color:#6d7e83;font-size:11px;text-transform:uppercase;letter-spacing:.45px;position:sticky;top:0}tr:last-child td{border-bottom:0}tbody tr:hover{background:#fbfdfc}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:11px;font-weight:750}.p-green{background:#e6f4ee;color:#17684f}.p-amber{background:#fff0d6;color:#875d16}.p-red{background:#fde9e8;color:#a63e39}.p-gray{background:#edf2f2;color:#53666b}.section{margin-top:16px}.decision-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:13px}.decision{border:1px solid var(--line);border-radius:14px;padding:15px}.decision h3{margin:0 0 8px;font-size:15px}.decision dl{display:grid;grid-template-columns:68px 1fr;gap:6px 8px;margin:0}.decision dt{font-size:11px;text-transform:uppercase;color:#809095}.decision dd{margin:0}.decision .bottom{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);font-weight:650}.footer{text-align:center;color:#819095;padding-top:28px;font-size:12px}.hide{display:none!important}.barlist{display:grid;gap:10px}.barrow{display:grid;grid-template-columns:110px 1fr 70px;gap:10px;align-items:center}.track{height:9px;border-radius:99px;background:#edf2f0;overflow:hidden}.fill{height:100%;border-radius:99px;background:var(--green)}
-@media(max-width:1050px){.kpis{grid-template-columns:repeat(3,1fr)}.decision-grid{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}@media(max-width:650px){.shell,.top-inner{padding-left:16px;padding-right:16px}.source{display:none}.hero{padding:24px 22px;grid-template-columns:1fr}.stamp{text-align:left}.hero h1{font-size:26px}.kpis{grid-template-columns:1fr 1fr}.decision-grid{grid-template-columns:1fr}.kpi .num{font-size:25px}.panel{padding:17px}}
+:root{
+ --bg:#f5f7f6;--card:#fff;--ink:#183038;--muted:#728287;--line:#e1e9e6;
+ --navy:#102a32;--green:#168565;--green2:#55aa8e;--amber:#c98a22;--red:#d45c56;--blue:#507e99;
+ --soft:#eef5f2;--soft2:#f8faf9;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.top{background:var(--navy);color:#fff}
+.topin{max-width:1480px;margin:auto;padding:17px 30px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.brand{font-weight:760;letter-spacing:.2px}.source{font-size:12px;color:#bdd0cc}
+.shell{max-width:1480px;margin:auto;padding:24px 30px 56px}
+.hero{background:linear-gradient(120deg,#122d35,#174039 76%,#17634e);color:#fff;border-radius:20px;padding:30px 34px;display:flex;justify-content:space-between;gap:24px;align-items:flex-end}
+.hero h1{margin:5px 0 7px;font-size:32px;line-height:1.15}.hero p{margin:0;color:#c9dad6;max-width:880px}.eyebrow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#76e4bc;font-weight:800}
+.stamp{text-align:right;font-size:12px;color:#bed0cc;white-space:nowrap}.stamp b{display:block;color:#fff;font-size:16px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.nav a{text-decoration:none;color:#50656b;background:#fff;border:1px solid var(--line);padding:8px 13px;border-radius:999px;font-weight:650}
+.note{padding:12px 15px;border:1px solid #ead29e;background:#fff8e9;color:#6d551e;border-radius:12px;margin:14px 0}
+.section{margin-top:18px}.section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:0 0 10px}.section-title h2{font-size:20px;margin:0}.section-title span{color:var(--muted);font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:11px}.kpi,.panel{background:var(--card);border:1px solid var(--line);border-radius:15px}
+.kpi{padding:16px 17px}.kpi .t{font-size:11px;color:var(--muted)}.kpi .v{font-size:27px;font-weight:800;line-height:1.2;margin:5px 0}.kpi .s{font-size:11px;color:var(--muted)}
+.good{color:var(--green)}.warn{color:var(--amber)}.bad{color:var(--red)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid32{display:grid;grid-template-columns:1.25fr .75fr;gap:14px}
+.panel{padding:19px}.panel h3{margin:0;font-size:16px}.sub{font-size:12px;color:var(--muted);margin:3px 0 14px}
+.chartbox{height:310px}.chartbox.sm{height:270px}
+.insight{margin-top:12px;padding:13px 15px;background:#edf7f3;border-left:4px solid var(--green);border-radius:0 10px 10px 0;color:#405b62}.insight b{color:#173c35}
+.insight.warnbox{background:#fff7e7;border-left-color:var(--amber)}.insight.redbox{background:#feeeee;border-left-color:var(--red)}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+table{border-collapse:collapse;width:100%;min-width:1040px}th,td{padding:11px 12px;border-bottom:1px solid #e8eeec;text-align:right;vertical-align:middle;white-space:nowrap}
+th{background:#f8faf9;color:#6c7d82;font-size:11px;text-transform:uppercase;letter-spacing:.35px;position:sticky;top:0;z-index:1}
+th:first-child,td:first-child{text-align:left}tr:last-child td{border-bottom:0}tbody tr:hover{background:#fbfdfc}
+.pill{display:inline-flex;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:750}.pg{background:#e5f3ed;color:#17684f}.pa{background:#fff0d4;color:#835b18}.pr{background:#fde8e7;color:#a33c38}.pn{background:#edf2f1;color:#566a70}
+.bars{display:grid;gap:11px;margin-top:7px}.barrow{display:grid;grid-template-columns:78px 1fr 65px;gap:10px;align-items:center}.track{height:9px;background:#edf2f0;border-radius:99px;overflow:hidden}.fill{height:100%;background:var(--green);border-radius:99px}.barval{text-align:right;font-weight:750}
+.product-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;margin-top:14px}
+.product-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.product-head h3{margin:0;font-size:18px}.product-head p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.product-metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:13px}.mini{background:var(--soft2);border-radius:11px;padding:11px}.mini .t{font-size:10px;color:var(--muted)}.mini .v{font-size:20px;font-weight:780;margin-top:3px}
+.product-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:12px}.trend-table{width:100%;min-width:0}.trend-table th,.trend-table td{padding:9px 9px;font-size:12px}
+.action-table td:last-child{text-align:left;white-space:normal;min-width:280px}.action-table td:nth-last-child(2){text-align:left;white-space:normal;min-width:250px}
+.footer{text-align:center;color:#829196;font-size:11px;padding-top:28px}
+@media(max-width:1120px){.kpis{grid-template-columns:repeat(3,1fr)}.grid2,.grid32,.product-grid{grid-template-columns:1fr}.product-metrics{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.topin,.shell{padding-left:15px;padding-right:15px}.source{display:none}.hero{padding:23px 20px;display:block}.hero h1{font-size:25px}.stamp{text-align:left;margin-top:14px}.kpis{grid-template-columns:1fr 1fr}.product-metrics{grid-template-columns:1fr 1fr}.chartbox{height:280px}}
 </style>
 </head>
 <body>
-<header class="top"><div class="top-inner"><div class="brand"><span class="mark"></span>Sunseeker · Amazon DSP</div><div class="source">VC + SC merged · SparkX export</div></div></header>
+<header class="top"><div class="topin"><div class="brand">Sunseeker · Amazon DSP</div><div class="source">VC + SC 合并口径</div></div></header>
 <main class="shell">
-<section class="hero"><div><div class="eyebrow">Weekly executive review</div><h1>DSP 合并投放效率与去留决策</h1><p>VC与SC按“月份 + 品线”合并；S4-Fire TV归入S4。所有ROAS / CTR / CPA / CPM / NTB%均基于合并后的分子分母重新计算，不做简单平均。</p></div><div class="stamp"><span>数据范围</span><strong>May–Aug 2026</strong><span>8月源Sheet标注“截止8月20日”，日期口径需复核</span></div></section>
-<div class="notice"><strong>口径修正：</strong>6月Overall不再视为异常月。合并后6月 Spend $23.46K / Sales $74.33K / ROAS 3.17x，是有效规模投放；异常只存在于SC 6月的尾效归因（Spend $0.29 → Sales $2.49K），因此该异常仅在“VC vs SC”页单独标注。</div>
-<nav class="filters"><button class="filter active" data-view="overall">Overall</button><button class="filter" data-view="product">BY 品线</button><button class="filter" data-view="channel">VC vs SC</button><button class="filter" data-view="decision">最终结论</button></nav>
-
-<section id="overallView">
-<section class="kpis"><div class="kpi"><div class="label">May–Aug Spend</div><div class="num">$50.34K</div><div class="delta">VC + SC合并</div></div><div class="kpi"><div class="label">May–Aug Sales</div><div class="num">$124.32K</div><div class="delta">Attributed Sales</div></div><div class="kpi"><div class="label">May–Aug ROAS</div><div class="num">2.47x</div><div class="delta">历史累计仍受5月拖累</div></div><div class="kpi"><div class="label">Jul+Aug ROAS</div><div class="num good">4.76x</div><div class="delta">Promoted ROAS 3.48x</div></div><div class="kpi"><div class="label">Aug CPA</div><div class="num good">$131</div><div class="delta">NTB 90.9%</div></div></section>
-<section class="grid2"><article class="panel"><h2>Monthly Spend vs DSP Sales</h2><p class="sub">VC+SC合并后的真实月度规模。</p><div class="chart-box"><canvas id="spendSales"></canvas></div><div class="callout"><strong>6月是真正的效率修复月</strong>Spend仅比5月增加12.9%，Sales增长254%，ROAS从1.01x升至3.17x，CPA从$944降至$242。</div></article><article class="panel"><h2>ROAS & Promoted ROAS</h2><p class="sub">Total归因效率与推广商品直接效率。</p><div class="chart-box"><canvas id="roasTrend"></canvas></div><div class="callout"><strong>7–8月进入高效阶段</strong>7月Total ROAS 3.78x，8月7.91x；更关键的是8月Promoted ROAS升至6.75x，说明高效率不再主要依赖Halo。</div></article></section>
-<section class="grid2"><article class="panel"><h2>转化质量变化</h2><p class="sub">DPV→Order是判断DSP流量质量的核心后链路指标。</p><div class="chart-box"><canvas id="conversionTrend"></canvas></div><div class="callout"><strong>流量变少但购买意图更强</strong>DPV→Order从5月0.06%提升到6月0.28%、7月0.59%、8月0.68%；DSP已从大量浏览转向高意向触达。</div></article><article class="panel"><h2>Overall月度汇总</h2><div class="table-wrap"><table><thead><tr><th>月份</th><th>Spend</th><th>Sales</th><th>ROAS</th><th>Promoted ROAS</th><th>Orders</th><th>NTB%</th><th>CPA</th><th>DPV→Order</th><th>判断</th></tr></thead><tbody><tr><td>5月</td><td>$20,774</td><td>$20,991.94</td><td class="bad"><b>1.01x</b></td><td>0.76x</td><td>22</td><td>63.6%</td><td>$944</td><td>0.06%</td><td><span class="pill p-red">低效</span></td></tr><tr><td>6月</td><td>$23,463.87</td><td>$74,326.21</td><td><b>3.17x</b></td><td>2.09x</td><td>97</td><td>77.3%</td><td>$242</td><td>0.28%</td><td><span class="pill p-amber">规模修复</span></td></tr><tr><td>7月</td><td>$4,654.24</td><td>$17,583.83</td><td class="good"><b>3.78x</b></td><td>2.47x</td><td>21</td><td>76.2%</td><td>$222</td><td>0.59%</td><td><span class="pill p-green">效率提升</span></td></tr><tr><td>8月*</td><td>$1,443.29</td><td>$11,417.70</td><td class="good"><b>7.91x</b></td><td class="good"><b>6.75x</b></td><td>11</td><td>90.9%</td><td>$131</td><td>0.68%</td><td><span class="pill p-green">当前最佳</span></td></tr></tbody></table></div><div class="callout alert"><strong>8月不可直接整月外推</strong>源表Sheet命名“截止8月20日”，与当前数据日期口径存在冲突；当前只把它作为8月导出/MTD效率使用。</div></article></section>
+<section class="hero">
+ <div><div class="eyebrow">DSP PERFORMANCE ANALYSIS</div><h1>Amazon DSP 投放分析</h1><p>先看整体投入产出，再拆到品线累计表现和月度趋势。VC 与 SC 按相同月份、相同品线合并；S4-Fire TV 归入 S4，比例指标基于合并后的分子分母重新计算。</p></div>
+ <div class="stamp">数据范围<b>2026年5月–8月导出</b>8月按源表当前导出值展示，不做整月规模对比</div>
 </section>
 
-<section id="productView" class="hide">
-<section class="kpis"><div class="kpi"><div class="label">S4 Jun ROAS</div><div class="num good">4.04x</div><div class="delta">Promoted 2.91x</div></div><div class="kpi"><div class="label">X7 Aug ROAS</div><div class="num good">9.35x</div><div class="delta">Promoted 6.80x</div></div><div class="kpi"><div class="label">X5 Aug ROAS</div><div class="num good">6.78x</div><div class="delta">Promoted 6.71x</div></div><div class="kpi"><div class="label">X3 Plus May ROAS</div><div class="num bad">0.39x</div><div class="delta">原打法低效</div></div><div class="kpi"><div class="label">扩量优先级</div><div class="num good">X5 / X7</div><div class="delta">S4 Hold</div></div></section>
-<section class="grid2"><article class="panel"><h2>品线ROAS趋势</h2><p class="sub">S4-Fire TV已归入S4；低于$1 Spend的尾效点不用于扩量判断。</p><div class="chart-box"><canvas id="productTrend"></canvas></div><div class="callout"><strong>结构发生轮动</strong>S4在6月率先修复；X7在8月进入高效；X5从6月0.13x跃升到8月6.78x，是当前最值得验证可持续性的新品线。</div></article><article class="panel"><h2>最新有效期 Direct Sales占比</h2><p class="sub">Promoted Sales / Total Attributed Sales，越高说明越不依赖Halo。</p><div class="barlist"><div class="barrow"><span>X5 · Aug</span><div class="track"><div class="fill" style="width:98.9%"></div></div><b>98.9%</b></div><div class="barrow"><span>S4 · Jul</span><div class="track"><div class="fill" style="width:81.8%"></div></div><b>81.8%</b></div><div class="barrow"><span>X7 · Aug</span><div class="track"><div class="fill" style="width:72.8%"></div></div><b>72.8%</b></div><div class="barrow"><span>X7 · Jul</span><div class="track"><div class="fill" style="width:49.0%"></div></div><b>49.0%</b></div></div><div class="callout"><strong>X5当前最“干净”</strong>8月Total ROAS 6.78x与Promoted ROAS 6.71x几乎一致；X7也从7月强Halo改善到8月更强Direct。</div></article></section>
-<section class="panel section"><h2>BY 品线合并结果</h2><div class="table-wrap"><table><thead><tr><th>品线</th><th>月份</th><th>Spend</th><th>Sales</th><th>ROAS</th><th>Promoted ROAS</th><th>NTB%</th><th>Orders</th><th>CPA</th><th>结论</th></tr></thead><tbody><tr><td><b>S4</b></td><td>5月</td><td>$9,261.98</td><td>$13,815.69</td><td>1.49x</td><td>1.10x</td><td>61.5%</td><td>13</td><td>$712</td><td>低效起点</td></tr><tr><td><b>S4</b></td><td>6月</td><td>$12,018.29</td><td>$48,533.22</td><td class="good"><b>4.04x</b></td><td>2.91x</td><td>81.4%</td><td>59</td><td>$204</td><td>规模+效率同时修复</td></tr><tr><td><b>S4</b></td><td>7月</td><td>$2,326.90</td><td>$8,789.86</td><td>3.78x</td><td>3.09x</td><td>54.6%</td><td>11</td><td>$212</td><td>Total过线，Direct略低</td></tr><tr><td><b>X7</b></td><td>5月</td><td>$8,133.07</td><td>$5,857.27</td><td class="bad">0.72x</td><td>0.55x</td><td>66.7%</td><td>6</td><td>$1,356</td><td>低效</td></tr><tr><td><b>X7</b></td><td>6月</td><td>$9,515.97</td><td>$25,175.05</td><td>2.65x</td><td>1.49x</td><td>74.3%</td><td>35</td><td>$272</td><td>明显修复但未过效率线</td></tr><tr><td><b>X7</b></td><td>7月</td><td>$2,327.28</td><td>$8,793.97</td><td>3.78x</td><td>1.85x</td><td>100%</td><td>10</td><td>$233</td><td>Halo贡献偏高</td></tr><tr><td><b>X7</b></td><td>8月</td><td>$617.65</td><td>$5,772.75</td><td class="good"><b>9.35x</b></td><td class="good"><b>6.80x</b></td><td>80%</td><td>5</td><td>$124</td><td>当前高效</td></tr><tr><td><b>X5</b></td><td>6月</td><td>$1,929.52</td><td>$258.00</td><td class="bad">0.13x</td><td>0.00x</td><td>50%</td><td>2</td><td>$965</td><td>原策略失败</td></tr><tr><td><b>X5</b></td><td>8月</td><td>$825.58</td><td>$5,599.95</td><td class="good"><b>6.78x</b></td><td class="good"><b>6.71x</b></td><td>100%</td><td>5</td><td>$165</td><td>当前最干净Direct效率</td></tr><tr><td><b>X3 Plus</b></td><td>5月</td><td>$3,378.95</td><td>$1,318.98</td><td class="bad">0.39x</td><td>0.35x</td><td>66.7%</td><td>3</td><td>$1,126</td><td>Stop原打法</td></tr></tbody></table></div></section>
+<nav class="nav">
+ <a href="#overall">Overall</a><a href="#product-total">BY品线整体</a><a href="#product-trend">BY品线月度趋势</a><a href="#actions">结论与动作</a>
+</nav>
+<div class="note"><b>口径说明：</b>SC 6月存在极低Spend但仍有历史归因Sales的尾效数据。Overall按VC+SC完整报表口径展示；品线判断同时补充“有效投放口径”（单条Spend ≥ $100），避免尾效把ROAS抬高。</div>
+
+<section id="overall" class="section">
+ <div class="section-title"><h2>1. Overall｜整体投入产出</h2><span>5–8月VC+SC累计</span></div>
+ <div class="kpis">
+  <div class="kpi"><div class="t">累计 Spend</div><div class="v">$50.34K</div><div class="s">5–8月报表口径</div></div>
+  <div class="kpi"><div class="t">累计 DSP Sales</div><div class="v">$124.32K</div><div class="s">Attributed Sales</div></div>
+  <div class="kpi"><div class="t">累计 ROAS</div><div class="v warn">2.47x</div><div class="s">低于3.33x参考效率线</div></div>
+  <div class="kpi"><div class="t">Promoted ROAS</div><div class="v">1.71x</div><div class="s">直接推广商品效率</div></div>
+  <div class="kpi"><div class="t">累计 Orders</div><div class="v">151</div><div class="s">CPA $333</div></div>
+  <div class="kpi"><div class="t">NTB Order %</div><div class="v good">76.2%</div><div class="s">新客占比较高</div></div>
+ </div>
+
+ <div class="grid2" style="margin-top:14px">
+  <article class="panel"><h3>BY月 Spend / Sales</h3><div class="sub">规模看投入和归因销售，8月为当前导出值，不与完整月份直接比绝对量。</div><div class="chartbox"><canvas id="overallMoney"></canvas></div>
+   <div class="insight"><b>看点：</b>5月Spend $20.77K只带来$20.99K Sales；6月Spend仅增加12.9%，Sales升到$74.33K。7月开始主动缩量，Spend下降80.2%，但ROAS继续提升。</div>
+  </article>
+  <article class="panel"><h3>BY月 ROAS / Promoted ROAS</h3><div class="sub">同时看Total归因效率和推广商品直接效率；虚线为3.33x参考效率线。</div><div class="chartbox"><canvas id="overallRoas"></canvas></div>
+   <div class="insight"><b>效率趋势：</b>ROAS 1.01x → 3.17x → 3.78x → 7.91x；Promoted ROAS同步从0.76x提升到6.75x。改善不只是Halo归因，8月Direct效率也明显起来。</div>
+  </article>
+ </div>
+
+ <div class="panel" style="margin-top:14px"><h3>Overall BY月明细</h3><div class="sub">用同一组指标解释每个月为什么好/差。</div>
+  <div class="tablewrap"><table>
+   <thead><tr><th>月份</th><th>Spend</th><th>Sales</th><th>ROAS</th><th>Promoted ROAS</th><th>Orders</th><th>CPA</th><th>NTB%</th><th>DPV→Order</th><th>观察</th></tr></thead>
+   <tbody>
+    <tr><td>5月</td><td>$20,774</td><td>$20,991.94</td><td class="bad"><b>1.01x</b></td><td>0.76x</td><td>22</td><td class="bad">$944</td><td>63.6%</td><td>0.06%</td><td style="text-align:left">投入高、转化弱，是当前累计ROAS被拉低的主要月份。</td></tr>
+    <tr><td>6月</td><td>$23,463.87</td><td>$74,326.21</td><td><b>3.17x</b></td><td>2.09x</td><td>97</td><td>$242</td><td>77.3%</td><td>0.28%</td><td style="text-align:left">Spend +12.9%，Sales +254%；效率开始明显修复。</td></tr>
+    <tr><td>7月</td><td>$4,654.24</td><td>$17,583.83</td><td class="good"><b>3.78x</b></td><td>2.47x</td><td>21</td><td>$222</td><td>76.2%</td><td>0.59%</td><td style="text-align:left">大幅缩量后ROAS继续提高，说明保留下来的流量质量更好。</td></tr>
+    <tr><td>8月导出</td><td>$1,443.29</td><td>$11,417.70</td><td class="good"><b>7.91x</b></td><td class="good">6.75x</td><td>11</td><td class="good">$131</td><td class="good">90.9%</td><td class="good">0.68%</td><td style="text-align:left">当前效率最好，但样本和时间范围较短，先看可持续性。</td></tr>
+   </tbody>
+  </table></div>
+ </div>
 </section>
 
-<section id="channelView" class="hide">
-<section class="kpis"><div class="kpi"><div class="label">May VC ROAS</div><div class="num">1.49x</div><div class="delta">S4为主</div></div><div class="kpi"><div class="label">May SC ROAS</div><div class="num bad">0.62x</div><div class="delta">X7 + X3 Plus</div></div><div class="kpi"><div class="label">Jun VC ROAS</div><div class="num">3.06x</div><div class="delta">真实规模投放</div></div><div class="kpi"><div class="label">Jun SC Spend</div><div class="num warn">$0.29</div><div class="delta">归因尾效</div></div><div class="kpi"><div class="label">Jun Combined ROAS</div><div class="num">3.17x</div><div class="delta">VC主导</div></div></section>
-<section class="grid2"><article class="panel"><h2>VC vs SC 月度贡献</h2><div class="chart-box"><canvas id="channelChart"></canvas></div><div class="callout"><strong>6月改善不是SC异常造成的</strong>6月VC自身 Spend $23.46K → Sales $71.84K → ROAS 3.06x；即使完全剔除SC尾效，6月依然较5月显著改善。</div></article><article class="panel"><h2>渠道数据质量诊断</h2><div class="table-wrap"><table><thead><tr><th>月份</th><th>渠道</th><th>Spend</th><th>Sales</th><th>ROAS</th><th>Promoted</th><th>Orders</th><th>CPA</th><th>判断</th></tr></thead><tbody><tr><td>5月</td><td>VC</td><td>$9,261.98</td><td>$13,815.69</td><td>1.49x</td><td>1.10x</td><td>13</td><td>$712</td><td>低效</td></tr><tr><td>5月</td><td>SC</td><td>$11,512.02</td><td>$7,176.25</td><td class="bad">0.62x</td><td>0.49x</td><td>9</td><td>$1,279</td><td>低效</td></tr><tr><td>6月</td><td>VC</td><td>$23,463.58</td><td>$71,835.94</td><td>3.06x</td><td>2.01x</td><td>94</td><td>$250</td><td>有效规模投放</td></tr><tr><td>6月</td><td>SC</td><td>$0.29</td><td>$2,490.27</td><td>8,587x*</td><td>7,139x*</td><td>3</td><td>$0.10*</td><td><span class="pill p-amber">Attribution Tail</span></td></tr><tr><td>7月</td><td>VC</td><td>$4,654.24</td><td>$17,583.83</td><td>3.78x</td><td>2.47x</td><td>21</td><td>$222</td><td>高效收缩</td></tr><tr><td>8月</td><td>VC</td><td>$1,443.29</td><td>$11,417.70</td><td>7.91x</td><td>6.75x</td><td>11</td><td>$131</td><td>当前最佳</td></tr></tbody></table></div><div class="callout alert"><strong>SC 6月不可单独用于效率判断</strong>SC只有100 impressions / 2 clicks，却记录629 DPV与$2.49K Sales，是历史归因回流；但它对合并Overall影响很小。</div></article></section>
+<section id="product-total" class="section">
+ <div class="section-title"><h2>2. BY品线｜累计表现</h2><span>先看谁贡献规模，再看谁贡献效率</span></div>
+ <div class="grid32">
+  <article class="panel"><h3>各品线 Spend / Sales 累计</h3><div class="sub">S4和X7承担了主要DSP预算与销售贡献。</div><div class="chartbox"><canvas id="productMoney"></canvas></div></article>
+  <aside class="panel"><h3>销售贡献 vs 花费占比</h3><div class="sub">判断预算是否换回了相匹配的销售份额。</div>
+   <div class="bars">
+    <div><b>S4</b><div class="barrow"><span>Spend</span><div class="track"><div class="fill" style="width:46.9%"></div></div><span class="barval">46.9%</span></div><div class="barrow"><span>Sales</span><div class="track"><div class="fill" style="width:57.3%"></div></div><span class="barval good">57.3%</span></div></div>
+    <div><b>X7</b><div class="barrow"><span>Spend</span><div class="track"><div class="fill" style="width:40.9%"></div></div><span class="barval">40.9%</span></div><div class="barrow"><span>Sales</span><div class="track"><div class="fill" style="width:36.7%"></div></div><span class="barval">36.7%</span></div></div>
+    <div><b>X5</b><div class="barrow"><span>Spend</span><div class="track"><div class="fill" style="width:5.5%"></div></div><span class="barval">5.5%</span></div><div class="barrow"><span>Sales</span><div class="track"><div class="fill" style="width:4.7%"></div></div><span class="barval">4.7%</span></div></div>
+    <div><b>X3 Plus</b><div class="barrow"><span>Spend</span><div class="track"><div class="fill" style="width:6.7%"></div></div><span class="barval">6.7%</span></div><div class="barrow"><span>Sales</span><div class="track"><div class="fill" style="width:1.4%"></div></div><span class="barval bad">1.4%</span></div></div>
+   </div>
+   <div class="insight"><b>结构上最明显：</b>S4花费占46.9%，销售贡献57.3%，是累计贡献最好的品线；X3 Plus花费占6.7%，销售只占1.4%，明显不匹配。</div>
+  </aside>
+ </div>
+
+ <div class="panel" style="margin-top:14px"><h3>BY品线累计指标</h3><div class="sub">“有效ROAS”排除单条Spend &lt; $100的尾效记录，更适合判断实际投放效率。</div>
+  <div class="tablewrap"><table>
+   <thead><tr><th>品线</th><th>Spend</th><th>Spend%</th><th>Sales</th><th>Sales%</th><th>报表ROAS</th><th>有效ROAS</th><th>Promoted ROAS</th><th>Orders</th><th>CPA</th><th>NTB%</th><th>整体判断</th></tr></thead>
+   <tbody>
+    <tr><td><b>S4</b></td><td>$23,607</td><td>46.9%</td><td>$71,184</td><td class="good">57.3%</td><td>3.02x</td><td><b>3.01x</b></td><td>2.22x</td><td>84</td><td>$281</td><td>75.0%</td><td style="text-align:left">规模和累计效率最好，是DSP的基本盘。</td></tr>
+    <tr><td><b>X7</b></td><td>$20,594</td><td>40.9%</td><td>$45,599</td><td>36.7%</td><td>2.21x</td><td><b>2.11x</b></td><td>1.32x</td><td>56</td><td>$368</td><td>78.6%</td><td style="text-align:left">累计仍偏低，但月度趋势持续改善，最近阶段明显转好。</td></tr>
+    <tr><td><b>X5</b></td><td>$2,755</td><td>5.5%</td><td>$5,858</td><td>4.7%</td><td>2.13x</td><td><b>2.13x</b></td><td>2.01x</td><td>7</td><td>$394</td><td class="good">85.7%</td><td style="text-align:left">累计被6月拖累，8月改善很快，但样本还小。</td></tr>
+    <tr><td><b>X3 Plus</b></td><td>$3,379</td><td>6.7%</td><td>$1,679</td><td class="bad">1.4%</td><td>0.50x</td><td class="bad"><b>0.39x</b></td><td>0.35x</td><td>4</td><td class="bad">$845</td><td>50.0%</td><td style="text-align:left">有效投放期明显亏损，当前没有继续原打法的依据。</td></tr>
+   </tbody>
+  </table></div>
+ </div>
 </section>
 
-<section id="decisionView" class="hide">
-<section class="panel"><h2>最终结论：DSP继续投，但必须集中预算</h2><p class="sub">历史累计ROAS只有2.47x，但7–8月最新可比策略已达到4.76x；因此结论不是“全面加预算”，而是“保留渠道、集中X5/X7、淘汰低效打法”。</p><div class="decision-grid"><div class="decision"><h3>X5 <span class="pill p-green">P0 SCALE</span></h3><dl><dt>Current</dt><dd>8月 ROAS 6.78x / Promoted 6.71x / NTB 100%</dd><dt>Gap</dt><dd>样本仅5单，需验证可持续性。</dd><dt>Action</dt><dd>预算 +15~20%，连续3D/7D观察Direct ROAS。</dd></dl><div class="bottom good">第一扩量优先级</div></div><div class="decision"><h3>X7 <span class="pill p-green">SCALE</span></h3><dl><dt>Current</dt><dd>8月 ROAS 9.35x / Promoted 6.80x</dd><dt>变化</dt><dd>7月Promoted仅1.85x，8月Direct显著修复。</dd><dt>Action</dt><dd>预算 +15~20%，重点监控View-through占比。</dd></dl><div class="bottom good">第二扩量优先级</div></div><div class="decision"><h3>S4 <span class="pill p-amber">HOLD</span></h3><dl><dt>Current</dt><dd>6月4.04x / 7月3.78x</dd><dt>风险</dt><dd>Promoted ROAS仅2.91x / 3.09x，Halo仍有贡献。</dd><dt>Action</dt><dd>保留Retargeting与高意向，不主动大幅扩量。</dd></dl><div class="bottom warn">守住效率</div></div><div class="decision"><h3>X3 Plus <span class="pill p-red">STOP</span></h3><dl><dt>Current</dt><dd>5月有效ROAS 0.39x / CPA $1,126</dd><dt>6月</dt><dd>SC为尾效，不能当作3999x真实效率。</dd><dt>Action</dt><dd>停止原打法，仅新Audience/素材小预算重测。</dd></dl><div class="bottom bad">不恢复旧Campaign</div></div></div><div class="callout"><strong>Overall · KEEP DSP</strong>7–8月 Spend $6.10K → Sales $29.00K，ROAS 4.76x，Promoted ROAS 3.48x，已越过3.33x直接效率管理线。DSP有继续投放价值，但新增预算只应流向X5/X7有效策略。</div></section>
-<section class="grid2"><article class="panel"><h2>建议预算结构</h2><div class="barlist"><div class="barrow"><span>X5</span><div class="track"><div class="fill" style="width:50%"></div></div><b>45–50%</b></div><div class="barrow"><span>X7</span><div class="track"><div class="fill" style="width:40%"></div></div><b>35–40%</b></div><div class="barrow"><span>S4 / Test</span><div class="track"><div class="fill" style="width:15%"></div></div><b>10–20%</b></div><div class="barrow"><span>X3 Plus</span><div class="track"><div class="fill" style="width:1%"></div></div><b>0%</b></div></div><div class="callout"><strong>扩量规则</strong>单次只加15–20%；若Promoted ROAS ≥3.33x且CPA/NTB稳定，继续扩；若Total高但Promoted跌破2x，优先检查Halo与View-through。</div></article><article class="panel"><h2>周会一句话</h2><div class="callout"><strong>建议直接汇报</strong>“VC+SC合并后，6月确认是DSP效率修复而非异常归因：Spend $23.46K带来$74.33K Sales，ROAS 3.17x。7–8月在缩量后效率继续提高，最近两月ROAS 4.76x、Promoted ROAS 3.48x。DSP应继续，但预算集中X5/X7；S4守效率，X3 Plus停止旧打法。”</div><div class="callout alert"><strong>仍需补证</strong>下一步应继续拿Click-through vs View-through Sales、Audience / Line Item、Frequency / Reach，确认高ROAS中的真实增量比例。</div></article></section>
+<section id="product-trend" class="section">
+ <div class="section-title"><h2>3. BY品线｜BY月趋势</h2><span>累计结果解释“基本盘”，月度趋势解释“现在该怎么投”</span></div>
+
+ <div class="product-card">
+  <div class="product-head"><div><h3>S4</h3><p>5–7月有连续有效投放；8月仅$0.06，属于尾效，不拿750x ROAS判断趋势。</p></div><span class="pill pg">稳定主力</span></div>
+  <div class="product-metrics"><div class="mini"><div class="t">累计Spend</div><div class="v">$23.61K</div></div><div class="mini"><div class="t">累计Sales</div><div class="v">$71.18K</div></div><div class="mini"><div class="t">有效ROAS</div><div class="v">3.01x</div></div><div class="mini"><div class="t">累计Orders</div><div class="v">84</div></div><div class="mini"><div class="t">NTB%</div><div class="v">75.0%</div></div></div>
+  <div class="product-grid"><div class="chartbox sm"><canvas id="s4Trend"></canvas></div><div>
+   <table class="trend-table"><thead><tr><th>月份</th><th>Spend</th><th>Sales</th><th>ROAS</th><th>Promoted</th><th>CPA</th></tr></thead><tbody>
+    <tr><td>5月</td><td>$9.26K</td><td>$13.82K</td><td>1.49x</td><td>1.10x</td><td>$712</td></tr>
+    <tr><td>6月</td><td>$12.02K</td><td>$48.53K</td><td class="good">4.04x</td><td>2.91x</td><td>$204</td></tr>
+    <tr><td>7月</td><td>$2.33K</td><td>$8.79K</td><td class="good">3.78x</td><td>3.09x</td><td>$212</td></tr>
+    <tr><td>8月</td><td>$0.06</td><td>$45</td><td>尾效</td><td>—</td><td>—</td></tr>
+   </tbody></table>
+   <div class="insight"><b>怎么理解：</b>5月效率弱，6月完成修复，7月缩量后仍保持3.78x。S4不是当前最需要砍的对象，重点是控制预算、保住6–7月的效率。</div>
+  </div></div>
+ </div>
+
+ <div class="product-card">
+  <div class="product-head"><div><h3>X7</h3><p>累计效率一般，但从5月到8月的改善最连续。</p></div><span class="pill pg">趋势向上</span></div>
+  <div class="product-metrics"><div class="mini"><div class="t">累计Spend</div><div class="v">$20.59K</div></div><div class="mini"><div class="t">累计Sales</div><div class="v">$45.60K</div></div><div class="mini"><div class="t">有效ROAS</div><div class="v">2.11x</div></div><div class="mini"><div class="t">8月ROAS</div><div class="v good">9.35x</div></div><div class="mini"><div class="t">8月Promoted</div><div class="v good">6.80x</div></div></div>
+  <div class="product-grid"><div class="chartbox sm"><canvas id="x7Trend"></canvas></div><div>
+   <table class="trend-table"><thead><tr><th>月份</th><th>Spend</th><th>Sales</th><th>ROAS</th><th>Promoted</th><th>CPA</th></tr></thead><tbody>
+    <tr><td>5月</td><td>$8.13K</td><td>$5.86K</td><td class="bad">0.72x</td><td>0.55x</td><td>$1,356</td></tr>
+    <tr><td>6月</td><td>$9.52K</td><td>$25.18K</td><td>2.65x</td><td>1.49x</td><td>$272</td></tr>
+    <tr><td>7月</td><td>$2.33K</td><td>$8.79K</td><td class="good">3.78x</td><td>1.85x</td><td>$233</td></tr>
+    <tr><td>8月</td><td>$618</td><td>$5.77K</td><td class="good">9.35x</td><td class="good">6.80x</td><td class="good">$124</td></tr>
+   </tbody></table>
+   <div class="insight"><b>怎么理解：</b>5月亏损最重，6月开始修复，7月Total ROAS过线但Direct仍弱；8月Promoted ROAS升到6.80x，说明最近改善不只是Halo。可以继续投，但应小步加预算确认可持续性。</div>
+  </div></div>
+ </div>
+
+ <div class="product-card">
+  <div class="product-head"><div><h3>X5</h3><p>6月失败、8月反转，波动最大，当前更适合验证而不是直接重仓。</p></div><span class="pill pa">需验证</span></div>
+  <div class="product-metrics"><div class="mini"><div class="t">累计Spend</div><div class="v">$2.76K</div></div><div class="mini"><div class="t">累计Sales</div><div class="v">$5.86K</div></div><div class="mini"><div class="t">累计ROAS</div><div class="v">2.13x</div></div><div class="mini"><div class="t">8月ROAS</div><div class="v good">6.78x</div></div><div class="mini"><div class="t">8月Orders</div><div class="v">5</div></div></div>
+  <div class="product-grid"><div class="chartbox sm"><canvas id="x5Trend"></canvas></div><div>
+   <table class="trend-table"><thead><tr><th>月份</th><th>Spend</th><th>Sales</th><th>ROAS</th><th>Promoted</th><th>CPA</th></tr></thead><tbody>
+    <tr><td>6月</td><td>$1.93K</td><td>$258</td><td class="bad">0.13x</td><td>0x</td><td>$965</td></tr>
+    <tr><td>7月</td><td>$0.06</td><td>$0</td><td>无有效投放</td><td>—</td><td>—</td></tr>
+    <tr><td>8月</td><td>$826</td><td>$5.60K</td><td class="good">6.78x</td><td class="good">6.71x</td><td class="good">$165</td></tr>
+   </tbody></table>
+   <div class="insight warnbox"><b>怎么理解：</b>8月Total ROAS和Promoted ROAS几乎一致，Direct转化质量很好；但只有5单，和6月0.13x反差过大。当前适合15–20%阶梯加量，不适合一次放大预算。</div>
+  </div></div>
+ </div>
+
+ <div class="product-card">
+  <div class="product-head"><div><h3>X3 Plus</h3><p>真正有Spend的5月表现很差；6月$0.09带来的Sales属于归因尾效。</p></div><span class="pill pr">暂停原打法</span></div>
+  <div class="product-metrics"><div class="mini"><div class="t">有效Spend</div><div class="v">$3.38K</div></div><div class="mini"><div class="t">有效Sales</div><div class="v">$1.32K</div></div><div class="mini"><div class="t">有效ROAS</div><div class="v bad">0.39x</div></div><div class="mini"><div class="t">Promoted</div><div class="v bad">0.35x</div></div><div class="mini"><div class="t">有效CPA</div><div class="v bad">$1,126</div></div></div>
+  <div class="product-grid"><div class="chartbox sm"><canvas id="x3Trend"></canvas></div><div>
+   <table class="trend-table"><thead><tr><th>月份</th><th>Spend</th><th>Sales</th><th>ROAS</th><th>Promoted</th><th>说明</th></tr></thead><tbody>
+    <tr><td>5月</td><td>$3.38K</td><td>$1.32K</td><td class="bad">0.39x</td><td class="bad">0.35x</td><td>有效投放</td></tr>
+    <tr><td>6月</td><td>$0.09</td><td>$360</td><td>尾效</td><td>0x</td><td>不作为效率判断</td></tr>
+   </tbody></table>
+   <div class="insight redbox"><b>怎么理解：</b>当前没有数据证明原DSP打法值得恢复。若后续要重开，应当按新Audience / 新素材单独做小预算测试，而不是直接恢复旧Campaign。</div>
+  </div></div>
+ </div>
 </section>
-<footer class="footer">Source: updated SparkX DSP workbook · VC + SC merged by month and product line · S4-Fire TV rolled into S4</footer>
+
+<section id="actions" class="section">
+ <div class="section-title"><h2>4. 结论与后续动作</h2><span>结论均对应上面的累计数据和月度趋势</span></div>
+ <div class="panel">
+  <div class="tablewrap"><table class="action-table">
+   <thead><tr><th>对象</th><th>Current</th><th>数据依据</th><th>结论</th><th>下一步</th></tr></thead>
+   <tbody>
+    <tr><td><b>Overall</b></td><td><span class="pill pa">继续，但控量</span></td><td style="text-align:left">累计ROAS 2.47x仍低于3.33x参考线；但6月起ROAS连续改善，7月3.78x，8月导出7.91x。</td><td>DSP不是整体停掉，而是保留有效策略，把预算从历史低效投放中收回来。</td><td>以Promoted ROAS、CPA和NTB作为扩量约束；不要只看Total ROAS。</td></tr>
+    <tr><td><b>S4</b></td><td><span class="pill pg">稳投</span></td><td style="text-align:left">累计Sales贡献57.3%，有效ROAS 3.01x；6月4.04x、7月3.78x，连续两个月有效。</td><td>S4是当前DSP基本盘，重点不是砍，而是守住6–7月效率。</td><td>预算保持稳定，优先保留高意向受众/Retargeting；Promoted ROAS跌破2.5x再收缩。</td></tr>
+    <tr><td><b>X7</b></td><td><span class="pill pg">小步加量</span></td><td style="text-align:left">有效累计ROAS 2.11x，但月度从0.72→2.65→3.78→9.35x，8月Promoted ROAS 6.80x。</td><td>累计历史还没完全修复，但最近策略明显有效。</td><td>单次预算+15–20%，观察7D Promoted ROAS和CPA是否保持。</td></tr>
+    <tr><td><b>X5</b></td><td><span class="pill pa">验证扩量</span></td><td style="text-align:left">6月0.13x，8月6.78x；8月Promoted ROAS 6.71x，但只有5单。</td><td>当前信号很好，但数据量不足，不能直接按成熟策略放大。</td><td>继续小预算扩量；若订单样本扩大后Promoted ROAS仍≥3.33x，再提高优先级。</td></tr>
+    <tr><td><b>X3 Plus</b></td><td><span class="pill pr">暂停</span></td><td style="text-align:left">5月有效ROAS 0.39x、CPA $1,126；6月数据是$0.09尾效。</td><td>原打法没有继续依据。</td><td>不恢复旧Campaign；只有新Audience/素材独立测试时再开。</td></tr>
+   </tbody>
+  </table></div>
+ </div>
+</section>
+
+<footer class="footer">Source: SparkX DSP export · VC + SC merged by month and product line · S4-Fire TV included in S4</footer>
 </main>
+
 <script>
-const labels=['5月','6月','7月','8月'];
-Chart.defaults.font.family='Inter, system-ui, -apple-system, Segoe UI, PingFang SC, Microsoft YaHei, sans-serif';Chart.defaults.color='#61747a';
-const opts={responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{x:{grid:{display:false}},y:{grid:{color:'#e8efec'},beginAtZero:true}}};
-new Chart(document.getElementById('spendSales'),{type:'bar',data:{labels,datasets:[{label:'Spend',data:[20774,23463.87,4654.24,1443.29],backgroundColor:'#148564'},{label:'DSP Sales',data:[20991.94,74326.21,17583.83,11417.70],backgroundColor:'#4f7f98'}]},options:opts});
-new Chart(document.getElementById('roasTrend'),{type:'line',data:{labels,datasets:[{label:'ROAS',data:[1.01,3.17,3.78,7.91],borderColor:'#148564',backgroundColor:'#148564',tension:.25},{label:'Promoted ROAS',data:[.76,2.09,2.47,6.75],borderColor:'#d99b32',backgroundColor:'#d99b32',tension:.25}]},options:{...opts,scales:{x:{grid:{display:false}},y:{beginAtZero:true,grid:{color:'#e8efec'},suggestedMax:9}}}});
-new Chart(document.getElementById('conversionTrend'),{type:'line',data:{labels,datasets:[{label:'DPV→Order %',data:[.057,.279,.594,.678],borderColor:'#148564',backgroundColor:'#148564',tension:.25},{label:'NTB % /100',data:[.636,.773,.762,.909],borderColor:'#4f7f98',backgroundColor:'#4f7f98',tension:.25}]},options:{...opts,scales:{x:{grid:{display:false}},y:{beginAtZero:true,grid:{color:'#e8efec'}}}}});
-new Chart(document.getElementById('productTrend'),{type:'line',data:{labels,datasets:[{label:'S4',data:[1.49,4.04,3.78,null],borderColor:'#148564',backgroundColor:'#148564',tension:.2},{label:'X7',data:[.72,2.65,3.78,9.35],borderColor:'#4f7f98',backgroundColor:'#4f7f98',tension:.2},{label:'X5',data:[null,.13,null,6.78],borderColor:'#d99b32',backgroundColor:'#d99b32',tension:.2},{label:'X3 Plus',data:[.39,null,null,null],borderColor:'#d95752',backgroundColor:'#d95752',tension:.2}]},options:{...opts,spanGaps:false}});
-new Chart(document.getElementById('channelChart'),{type:'bar',data:{labels:['5月VC','5月SC','6月VC','6月SC*','7月VC','8月VC'],datasets:[{label:'Spend',data:[9261.98,11512.02,23463.58,.29,4654.24,1443.29],backgroundColor:'#148564'},{label:'Sales',data:[13815.69,7176.25,71835.94,2490.27,17583.83,11417.70],backgroundColor:'#4f7f98'}]},options:opts});
-const views={overall:document.querySelector('#overallView'),product:document.querySelector('#productView'),channel:document.querySelector('#channelView'),decision:document.querySelector('#decisionView')};document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');Object.values(views).forEach(v=>v.classList.add('hide'));views[b.dataset.view].classList.remove('hide')}));
+Chart.defaults.font.family='Inter, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif';
+Chart.defaults.color='#64777d';
+const grid='#e7eeeb', green='#168565', blue='#507e99', amber='#c98a22', red='#d45c56';
+const common={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{usePointStyle:true,boxWidth:8}},tooltip:{mode:'index',intersect:false}},scales:{x:{grid:{display:false}},y:{grid:{color:grid},beginAtZero:true}}};
+
+new Chart(document.getElementById('overallMoney'),{type:'bar',data:{labels:['5月','6月','7月','8月导出'],datasets:[
+ {label:'Spend',data:[20774,23463.87,4654.24,1443.29],backgroundColor:green,borderRadius:5},
+ {label:'DSP Sales',data:[20991.94,74326.21,17583.83,11417.7],backgroundColor:blue,borderRadius:5}
+]},options:{...common,scales:{x:{grid:{display:false}},y:{grid:{color:grid},beginAtZero:true,ticks:{callback:v=>'$'+(v/1000)+'K'}}}}});
+
+new Chart(document.getElementById('overallRoas'),{type:'line',data:{labels:['5月','6月','7月','8月导出'],datasets:[
+ {label:'ROAS',data:[1.01,3.17,3.78,7.91],borderColor:green,backgroundColor:green,tension:.28,pointRadius:5,borderWidth:3},
+ {label:'Promoted ROAS',data:[.76,2.09,2.47,6.75],borderColor:blue,backgroundColor:blue,tension:.28,pointRadius:5,borderWidth:2},
+ {label:'参考线 3.33x',data:[3.33,3.33,3.33,3.33],borderColor:amber,pointRadius:0,borderDash:[6,5],borderWidth:1.5}
+]},options:{...common,scales:{x:{grid:{display:false}},y:{grid:{color:grid},beginAtZero:true,suggestedMax:8.5,ticks:{callback:v=>v+'x'}}}}});
+
+new Chart(document.getElementById('productMoney'),{type:'bar',data:{labels:['S4','X7','X5','X3 Plus'],datasets:[
+ {label:'Spend',data:[23607.23,20593.97,2755.16,3379.04],backgroundColor:green,borderRadius:5},
+ {label:'Sales',data:[71183.77,45599.04,5857.95,1678.92],backgroundColor:blue,borderRadius:5}
+]},options:{...common,scales:{x:{grid:{display:false}},y:{grid:{color:grid},beginAtZero:true,ticks:{callback:v=>'$'+(v/1000)+'K'}}}}});
+
+function trendChart(id,labels,roas,promoted){
+ new Chart(document.getElementById(id),{type:'line',data:{labels,datasets:[
+  {label:'ROAS',data:roas,borderColor:green,backgroundColor:green,tension:.25,pointRadius:5,borderWidth:3,spanGaps:false},
+  {label:'Promoted ROAS',data:promoted,borderColor:blue,backgroundColor:blue,tension:.25,pointRadius:4,borderWidth:2,spanGaps:false},
+  {label:'参考线 3.33x',data:labels.map(()=>3.33),borderColor:amber,pointRadius:0,borderDash:[6,5],borderWidth:1.2}
+ ]},options:{...common,scales:{x:{grid:{display:false}},y:{grid:{color:grid},beginAtZero:true,ticks:{callback:v=>v+'x'}}}}});
+}
+trendChart('s4Trend',['5月','6月','7月','8月'],[1.49,4.04,3.78,null],[1.10,2.91,3.09,null]);
+trendChart('x7Trend',['5月','6月','7月','8月'],[.72,2.65,3.78,9.35],[.55,1.49,1.85,6.80]);
+trendChart('x5Trend',['6月','7月','8月'],[.13,null,6.78],[0,null,6.71]);
+trendChart('x3Trend',['5月','6月'],[.39,null],[.35,null]);
 </script>
 </body>
 </html>
