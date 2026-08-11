@@ -30,7 +30,7 @@ Pages refresh triggered on 2026-07-22 after repository visibility and branch-sou
 Robot Lawn Mower 低星评论可视化已加入 [review-dashboard](./review-dashboard/)：支持 X3 Plus、S4、X7、X5 品线筛选，展示问题覆盖率、星级结构、产品风险矩阵以及 Current / Target / Gap / Action 行动方案。
 
 - 在线地址：https://rafe999.github.io/sunseeker-weekly-dashboard/review-dashboard/
-- 数据口径：30 行低星评论，按行统计且未去重；一条评论可命中多个问题类别。
+- 数据口径：30 行低星评论，按行统计且未去重；一条评论可命中多个痛点，且存在重复/跨 ASIN 复用评论，因此问题覆盖率不可相加，权重可能被放大。
 
 ## SC 仓储费 & 超龄附加费看板
 
@@ -51,9 +51,11 @@ SC Robot Mower 仓储成本可视化已加入 [storage-dashboard](./storage-dash
 
 ## Amazon DSP 周会看板
 
-新增 [dsp-dashboard](./dsp-dashboard/)：基于 SparkX DSP 导出数据，覆盖 May–Aug 2026 的 Overall 月度趋势、6月归因尾效诊断、BY 品线效率以及最终预算去留建议。
+[dsp-dashboard](./dsp-dashboard/) 已更新为 VC + SC 合并口径：按“月份 + 品线”汇总，S4-Fire TV并入S4，比例指标基于合并后的分子分母重新计算。
 
 - 在线地址：https://rafe999.github.io/sunseeker-weekly-dashboard/dsp-dashboard/
-- 核心口径：6月保留原始数据展示，但因 Spend $0.29 / 100 Impressions 对应 629 DPV 和 $2,490.27 attributed sales，被标记为 attribution tail，不参与正常ROAS趋势比较
-- 最近可比期：Jul + Aug，Spend $6.10K，DSP Sales $29.00K，ROAS 4.76x，Promoted ROAS约3.48x
-- BY 品线结论：X5 / X7 Scale；S4 Hold；X3 Plus Stop 原打法
+- 5月 Overall：Spend $20.77K，Sales $20.99K，ROAS 1.01x
+- 6月 Overall：Spend $23.46K，Sales $74.33K，ROAS 3.17x；SC单独为归因尾效，但VC本身ROAS 3.06x，因此6月整体属于真实效率修复
+- 最近可比期 Jul + Aug：Spend $6.10K，DSP Sales $29.00K，ROAS 4.76x，Promoted ROAS约3.48x
+- BY 品线结论：X5 P0 Scale；X7 Scale；S4 Hold；X3 Plus Stop 原打法
+- 数据质量：8月源Sheet命名“截止8月20日”，与当前日期口径存在冲突，Dashboard按8月导出/MTD展示，不做整月外推
