@@ -48,3 +48,12 @@ SC Robot Mower 仓储成本可视化已加入 [storage-dashboard](./storage-dash
 - 内容：当前持仓、周度悲观/基准/乐观情景、日度预测净值、实际净值、预测误差、CPO/PCB/存储/半导体观察、分档加减仓方案
 - 数据文件：`investment-dashboard/data/forecast.json`、`actual.json`、`cash-plan.json`
 - 更新方式：交易日收盘后更新实际净值与预测误差，Pages自动刷新
+
+## Amazon DSP 周会看板
+
+新增 [dsp-dashboard](./dsp-dashboard/)：基于 SparkX DSP 导出数据，覆盖 May–Aug 2026 的 Overall 月度趋势、6月归因尾效诊断、BY 品线效率以及最终预算去留建议。
+
+- 在线地址：https://rafe999.github.io/sunseeker-weekly-dashboard/dsp-dashboard/
+- 核心口径：6月保留原始数据展示，但因 Spend $0.29 / 100 Impressions 对应 629 DPV 和 $2,490.27 attributed sales，被标记为 attribution tail，不参与正常ROAS趋势比较
+- 最近可比期：Jul + Aug，Spend $6.10K，DSP Sales $29.00K，ROAS 4.76x，Promoted ROAS约3.48x
+- BY 品线结论：X5 / X7 Scale；S4 Hold；X3 Plus Stop 原打法
