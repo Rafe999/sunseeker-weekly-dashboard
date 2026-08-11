@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-11T17:31:28+08:00",
+  "updatedAt": "2026-08-12T00:07:22+08:00",
   "officialNavStatus": "updated",
   "records": [
     {
@@ -51,6 +51,57 @@
       "sectorNote": "存储 / 半导体设计",
       "action": "hold/no_add",
       "sourceDate": "2026-08-10",
+      "source": "fundmobapi.eastmoney.com FundMNFInfo"
+    },
+    {
+      "date": "2026-08-11",
+      "code": "024481",
+      "name": "财通品质甄选混合C",
+      "actualNav": 1.9572,
+      "previousNav": 1.9602,
+      "dailyChangePct": -0.15,
+      "dailyChangeValue": -0.003,
+      "holdingPnl": -4.59,
+      "sharesUsed": 1528.742,
+      "predictionErrorNav": -0.0273,
+      "predictionErrorPct": -1.3757,
+      "sectorNote": "CPO / PCB",
+      "action": "review",
+      "sourceDate": "2026-08-11",
+      "source": "fundmobapi.eastmoney.com FundMNFInfo"
+    },
+    {
+      "date": "2026-08-11",
+      "code": "024975",
+      "name": "华泰柏瑞上证科创板半导体材料设备主题ETF发起式联接C",
+      "actualNav": 2.5328,
+      "previousNav": 2.5977,
+      "dailyChangePct": -2.5,
+      "dailyChangeValue": -0.0649,
+      "holdingPnl": -53.71,
+      "sharesUsed": 827.609,
+      "predictionErrorNav": -0.0022,
+      "predictionErrorPct": -0.0868,
+      "sectorNote": "半导体设备 / 材料",
+      "action": "review",
+      "sourceDate": "2026-08-11",
+      "source": "fundmobapi.eastmoney.com FundMNFInfo"
+    },
+    {
+      "date": "2026-08-11",
+      "code": "025500",
+      "name": "东方阿尔法科技智选混合发起C",
+      "actualNav": 1.6183,
+      "previousNav": 1.6231,
+      "dailyChangePct": -0.3,
+      "dailyChangeValue": -0.0048,
+      "holdingPnl": -9.69,
+      "sharesUsed": 2018.0272,
+      "predictionErrorNav": -0.0364,
+      "predictionErrorPct": -2.1998,
+      "sectorNote": "存储 / 半导体设计",
+      "action": "review",
+      "sourceDate": "2026-08-11",
       "source": "fundmobapi.eastmoney.com FundMNFInfo"
     }
   ],
