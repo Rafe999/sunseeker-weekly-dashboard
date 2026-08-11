@@ -3,7 +3,25 @@
   "baselineDate": "2026-08-07",
   "baselineTotalAssets": 40000,
   "cash": 31700,
+  "cashStatus": "estimated_prior_conversation",
   "baselineInvested": 8300,
   "currency": "CNY",
-  "note": "总盈亏以初始投入50000元为基准；本周盈亏以2026-08-07总资产40000元为起点。当前无新增交易；若后续加减仓需同步更新现金和持仓基准。"
+  "latestThirdPartySnapshot": {
+    "asOf": "2026-08-11T17:24:55+08:00",
+    "source": "养基宝用户截图",
+    "fundAccountAssets": 8424.15,
+    "intradayPenetrationPnl": -89.59,
+    "estimatedThroughFundAssets": 8334.56,
+    "estimatedTotalAssetsUsingPriorCash": 40034.56,
+    "estimatedTotalPnlUsingPriorCash": -9965.44,
+    "estimatedTotalReturnPctUsingPriorCash": -19.9309,
+    "trackedFundsAssets": 8421.98,
+    "otherResidualAssets": 2.17
+  },
+  "estimatedSharesFromSnapshot": {
+    "025500": 2018.0272,
+    "024481": 1528.7420,
+    "024975": 827.6090
+  },
+  "note": "总盈亏以初始投入50000元为基准；现金31700元仍沿用此前估算，因此总资产和总盈亏为估算值。8/11养基宝截图提供基金账户资产8424.15元及场内穿透-89.59元；三只主基金当前资产合计8421.98元。截图中的持有收益可能包含历史交易影响，不等同于当前浮动盈亏。"
 }
