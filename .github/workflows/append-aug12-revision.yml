@@ -1,0 +1,20 @@
+name: Append Aug12 revision
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/append-aug12-revision.yml'
+permissions:
+  contents: write
+jobs:
+  append:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python investment-dashboard/append_aug12_revision.py
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add investment-dashboard/data/forecast.json
+          git commit -m 'Append 8/12 official and CPI forecast revision' || exit 0
+          git push
