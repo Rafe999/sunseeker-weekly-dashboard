@@ -1,6 +1,7 @@
 {
   "asOf": "2026-08-11T17:24:55+08:00",
   "source": "养基宝用户截图",
+  "status": "reconciled_with_official_nav",
   "accountAssets": 8424.15,
   "intradayPenetrationPnl": -89.59,
   "estimatedThroughAssets": 8334.56,
@@ -16,31 +17,53 @@
     {
       "code": "025500",
       "name": "东方阿尔法科技智选混合发起C",
-      "currentAsset": 3275.46,
+      "currentAssetAtSnapshot": 3275.46,
       "linkedSector": "存储芯片",
       "linkedSectorChangePct": 0.13,
       "holdingPnl": -4687.76,
-      "holdingReturnPct": -58.87
+      "holdingReturnPct": -58.87,
+      "finalOfficialNav": 1.6183,
+      "finalDailyChangePct": -0.30,
+      "finalDailyPnl": -9.69,
+      "finalAsset": 3265.77
     },
     {
       "code": "024481",
       "name": "财通品质甄选混合C",
-      "currentAsset": 2996.64,
+      "currentAssetAtSnapshot": 2996.64,
       "linkedSector": "PCB",
       "linkedSectorChangePct": -0.49,
       "holdingPnl": -1826.28,
-      "holdingReturnPct": -37.87
+      "holdingReturnPct": -37.87,
+      "finalOfficialNav": 1.9572,
+      "finalDailyChangePct": -0.15,
+      "finalDailyPnl": -4.59,
+      "finalAsset": 2992.05
     },
     {
       "code": "024975",
       "name": "华泰柏瑞上证科创板半导体材料设备主题ETF发起式联接C",
-      "currentAsset": 2149.88,
+      "currentAssetAtSnapshot": 2149.88,
       "linkedSector": "科创半导材料",
       "linkedSectorChangePct": -2.76,
       "holdingPnl": -782.06,
-      "holdingReturnPct": -26.67
+      "holdingReturnPct": -26.67,
+      "finalOfficialNav": 2.5328,
+      "finalDailyChangePct": -2.50,
+      "finalDailyPnl": -53.71,
+      "finalAsset": 2096.17
     }
   ],
   "trackedFundsHoldingPnlSum": -7296.10,
-  "note": "截图中三只主基金的当日收益列均为“-”，因此关联板块涨跌只作为盘面代理，不作为基金官方日涨跌。持有收益为养基宝口径，可能包含历史交易影响，不等同于当前浮动盈亏。"
+  "finalOfficialReconciliation": {
+    "date": "2026-08-11",
+    "trackedFundsFinalAssets": 8354.00,
+    "trackedFundsActualDailyPnl": -67.99,
+    "finalFundAccountAssetsIncludingResidual": 8356.17,
+    "penetrationEstimatedPnl": -89.59,
+    "penetrationPnlError": -21.60,
+    "finalAssetsMinusPenetrationEstimate": 21.61,
+    "note": "最终官方净值显示实际亏损小于17:24养基宝场内穿透估算；最终实际以官方净值为准，截图仅保留为估算快照。"
+  },
+  "note": "养基宝17:24截图为当时估算快照；8/11最终官方净值已完成对账。关联板块涨跌只作为盘面代理，不作为基金官方日涨跌。持有收益为养基宝历史口径，可能包含历史交易影响。"
 }
