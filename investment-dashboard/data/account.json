@@ -16,12 +16,25 @@
     "estimatedTotalPnlUsingPriorCash": -9965.44,
     "estimatedTotalReturnPctUsingPriorCash": -19.9309,
     "trackedFundsAssets": 8421.98,
-    "otherResidualAssets": 2.17
+    "otherResidualAssets": 2.17,
+    "status": "historical_estimate_reconciled"
+  },
+  "latestOfficialSnapshot": {
+    "date": "2026-08-11",
+    "source": "official fund NAV via Eastmoney FundMNFInfo",
+    "trackedFundsAssets": 8354.00,
+    "otherResidualAssetsAssumed": 2.17,
+    "fundAccountAssets": 8356.17,
+    "trackedFundsDailyPnl": -67.99,
+    "estimatedTotalAssetsUsingPriorCash": 40056.17,
+    "estimatedTotalPnlUsingPriorCash": -9943.83,
+    "estimatedTotalReturnPctUsingPriorCash": -19.8877,
+    "cashCaveat": "现金31700元仍为此前估算，因此总资产/总盈亏仍是估算；基金端采用8/11最终官方净值。"
   },
   "estimatedSharesFromSnapshot": {
     "025500": 2018.0272,
     "024481": 1528.7420,
     "024975": 827.6090
   },
-  "note": "总盈亏以初始投入50000元为基准；现金31700元仍沿用此前估算，因此总资产和总盈亏为估算值。8/11养基宝截图提供基金账户资产8424.15元及场内穿透-89.59元；三只主基金当前资产合计8421.98元。截图中的持有收益可能包含历史交易影响，不等同于当前浮动盈亏。"
+  "note": "总盈亏以初始投入50000元为基准；现金31700元仍沿用此前估算。8/11养基宝17:24截图作为历史估算快照保留；最终基金资产和当日盈亏以8/11官方净值对账后的latestOfficialSnapshot为准。"
 }
