@@ -7,14 +7,15 @@
   "baselineInvested": 8300,
   "currency": "CNY",
   "latestThirdPartySnapshot": {
-    "asOf": "2026-08-13T14:47:00+08:00",
+    "asOf": "2026-08-13T15:00:00+08:00",
     "source": "养基宝用户截图",
+    "snapshotType": "close_estimate",
     "fundAccountAssets": 8545.97,
-    "intradayPenetrationPnl": -81.85,
-    "estimatedThroughFundAssets": 8464.12,
-    "estimatedTotalAssetsUsingPriorCash": 40164.12,
-    "estimatedTotalPnlUsingPriorCash": -9835.88,
-    "estimatedTotalReturnPctUsingPriorCash": -19.6718,
+    "intradayPenetrationPnl": -149.26,
+    "estimatedThroughFundAssets": 8396.71,
+    "estimatedTotalAssetsUsingPriorCash": 40096.71,
+    "estimatedTotalPnlUsingPriorCash": -9903.29,
+    "estimatedTotalReturnPctUsingPriorCash": -19.8066,
     "trackedFundsAssets": 8543.76,
     "otherResidualAssets": 2.21,
     "status": "pending_official_nav"
@@ -36,5 +37,5 @@
     "024481": 1528.7420,
     "024975": 827.6090
   },
-  "note": "8/13 14:47养基宝场内穿透约-81.85元，但8/13官方净值尚未发布。顶部官方账户口径仍以8/12最终净值为准；8/13截图只用于盘中判断。现金31700元仍为此前估算。"
+  "note": "8/13 15:00养基宝收盘场内穿透约-149.26元，但8/13官方净值尚未发布。顶部官方账户口径仍以8/12最终净值为准；8/13收盘截图只用于估算和次日决策。现金31700元仍为此前估算。"
 }
