@@ -1,17 +1,18 @@
 {
-  "asOf": "2026-08-13T14:47:00+08:00",
+  "asOf": "2026-08-13T15:00:00+08:00",
   "source": "养基宝用户截图",
   "status": "pending_official_nav",
+  "snapshotType": "close_estimate",
   "accountAssets": 8545.97,
-  "intradayPenetrationPnl": -81.85,
-  "estimatedThroughAssets": 8464.12,
+  "intradayPenetrationPnl": -149.26,
+  "estimatedThroughAssets": 8396.71,
   "trackedFundsAssets": 8543.76,
   "otherResidualAssets": 2.21,
   "indexSnapshot": {
     "name": "深证成指",
-    "level": 14324.52,
-    "changeValue": -89.91,
-    "changePct": -0.62
+    "level": 14318.02,
+    "changeValue": -96.41,
+    "changePct": -0.67
   },
   "trackedFunds": [
     {
@@ -19,7 +20,7 @@
       "name": "东方阿尔法科技智选混合发起C",
       "currentAssetAtSnapshot": 3341.86,
       "linkedSector": "存储芯片",
-      "linkedSectorChangePct": -1.26,
+      "linkedSectorChangePct": -2.12,
       "holdingPnl": -4621.36,
       "holdingReturnPct": -58.03
     },
@@ -28,7 +29,7 @@
       "name": "财通品质甄选混合C",
       "currentAssetAtSnapshot": 3064.51,
       "linkedSector": "PCB",
-      "linkedSectorChangePct": -0.13,
+      "linkedSectorChangePct": -0.77,
       "holdingPnl": -1758.41,
       "holdingReturnPct": -36.46
     },
@@ -37,15 +38,24 @@
       "name": "华泰柏瑞上证科创板半导体材料设备主题ETF发起式联接C",
       "currentAssetAtSnapshot": 2137.39,
       "linkedSector": "科创半导材料",
-      "linkedSectorChangePct": -1.90,
+      "linkedSectorChangePct": -2.74,
       "holdingPnl": -794.55,
       "holdingReturnPct": -27.10
     }
   ],
   "additionalSectorSnapshot": {
-    "CPO": 0.60
+    "CPO": -0.07
   },
   "history": [
+    {
+      "asOf": "2026-08-13T14:47:00+08:00",
+      "accountAssets": 8545.97,
+      "intradayPenetrationPnl": -81.85,
+      "estimatedThroughAssets": 8464.12,
+      "indexChangePct": -0.62,
+      "sectors": {"CPO": 0.60, "PCB": -0.13, "storage": -1.26, "semiMaterials": -1.90},
+      "status": "intraday_estimate"
+    },
     {
       "asOf": "2026-08-12T17:33:00+08:00",
       "accountAssets": 8356.18,
@@ -77,5 +87,5 @@
       }
     }
   ],
-  "note": "8/13 14:47养基宝快照仅作盘中穿透估算：CPO +0.60%、PCB -0.13%、存储芯片 -1.26%、科创半导材料 -1.90%、深证成指 -0.62%，场内穿透 -81.85元。8/13最终基金实际仍以晚间官方净值为准。"
+  "note": "8/13 15:00养基宝收盘穿透估算：CPO -0.07%、PCB -0.77%、存储芯片 -2.12%、科创半导材料 -2.74%、深证成指 -0.67%，场内穿透 -149.26元。该快照作为8/13收盘估算层，晚间最终实际仍以基金官方净值为准。"
 }
