@@ -7,17 +7,17 @@
   "baselineInvested": 8300,
   "currency": "CNY",
   "latestThirdPartySnapshot": {
-    "asOf": "2026-08-12T17:33:00+08:00",
+    "asOf": "2026-08-13T14:47:00+08:00",
     "source": "养基宝用户截图",
-    "fundAccountAssets": 8356.18,
-    "intradayPenetrationPnl": 182.93,
-    "estimatedThroughFundAssets": 8539.11,
-    "estimatedTotalAssetsUsingPriorCash": 40239.11,
-    "estimatedTotalPnlUsingPriorCash": -9760.89,
-    "estimatedTotalReturnPctUsingPriorCash": -19.5218,
-    "trackedFundsAssets": 8354.00,
-    "otherResidualAssets": 2.18,
-    "status": "historical_estimate_reconciled"
+    "fundAccountAssets": 8545.97,
+    "intradayPenetrationPnl": -81.85,
+    "estimatedThroughFundAssets": 8464.12,
+    "estimatedTotalAssetsUsingPriorCash": 40164.12,
+    "estimatedTotalPnlUsingPriorCash": -9835.88,
+    "estimatedTotalReturnPctUsingPriorCash": -19.6718,
+    "trackedFundsAssets": 8543.76,
+    "otherResidualAssets": 2.21,
+    "status": "pending_official_nav"
   },
   "latestOfficialSnapshot": {
     "date": "2026-08-12",
@@ -36,5 +36,5 @@
     "024481": 1528.7420,
     "024975": 827.6090
   },
-  "note": "总盈亏以初始投入50000元为基准；现金31700元仍沿用此前估算。8/12养基宝17:33场内穿透估算+182.93元，最终三只基金官方净值对应实际盈利约189.75元，养基宝少估盈利约6.82元；最终实际以官方净值为准。"
+  "note": "8/13 14:47养基宝场内穿透约-81.85元，但8/13官方净值尚未发布。顶部官方账户口径仍以8/12最终净值为准；8/13截图只用于盘中判断。现金31700元仍为此前估算。"
 }
