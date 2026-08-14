@@ -1,7 +1,7 @@
 {
   "asOf": "2026-08-13T15:00:00+08:00",
   "source": "养基宝用户截图",
-  "status": "pending_official_nav",
+  "status": "reconciled_with_official_nav",
   "snapshotType": "close_estimate",
   "accountAssets": 8545.97,
   "intradayPenetrationPnl": -149.26,
@@ -46,7 +46,32 @@
   "additionalSectorSnapshot": {
     "CPO": -0.07
   },
+  "finalOfficialReconciliation": {
+    "date": "2026-08-13",
+    "trackedFundsFinalAssets": 8365.01,
+    "trackedFundsActualDailyPnl": -178.74,
+    "finalFundAccountAssetsIncludingResidual": 8367.19,
+    "penetrationEstimatedPnl": -149.26,
+    "penetrationPnlError": 29.48
+  },
   "history": [
+    {
+      "asOf": "2026-08-13T15:00:00+08:00",
+      "accountAssets": 8545.97,
+      "intradayPenetrationPnl": -149.26,
+      "estimatedThroughAssets": 8396.71,
+      "indexChangePct": -0.67,
+      "sectors": {"CPO": -0.07, "PCB": -0.77, "storage": -2.12, "semiMaterials": -2.74},
+      "status": "reconciled_with_official_nav",
+      "finalOfficialReconciliation": {
+        "date": "2026-08-13",
+        "trackedFundsFinalAssets": 8365.01,
+        "trackedFundsActualDailyPnl": -178.74,
+        "finalFundAccountAssetsIncludingResidual": 8367.19,
+        "penetrationEstimatedPnl": -149.26,
+        "penetrationPnlError": 29.48
+      }
+    },
     {
       "asOf": "2026-08-13T14:47:00+08:00",
       "accountAssets": 8545.97,
@@ -87,5 +112,5 @@
       }
     }
   ],
-  "note": "8/13 15:00养基宝收盘穿透估算：CPO -0.07%、PCB -0.77%、存储芯片 -2.12%、科创半导材料 -2.74%、深证成指 -0.67%，场内穿透 -149.26元。该快照作为8/13收盘估算层，晚间最终实际仍以基金官方净值为准。"
+  "note": "8/13 15:00养基宝收盘穿透估算：CPO -0.07%、PCB -0.77%、存储芯片 -2.12%、科创半导材料 -2.74%、深证成指 -0.67%，场内穿透 -149.26元。晚间官方净值发布后，8/13基金端实际盈亏为-178.74元，二者相差29.48元；最终实际以基金官方净值为准。"
 }
