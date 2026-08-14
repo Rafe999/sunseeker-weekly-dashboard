@@ -17,24 +17,32 @@
     "estimatedTotalReturnPctUsingPriorCash": -19.8066,
     "trackedFundsAssets": 8543.76,
     "otherResidualAssets": 2.21,
-    "status": "pending_official_nav"
+    "status": "reconciled_with_official_nav",
+    "finalOfficialReconciliation": {
+      "date": "2026-08-13",
+      "trackedFundsFinalAssets": 8365.01,
+      "trackedFundsActualDailyPnl": -178.74,
+      "finalFundAccountAssetsIncludingResidual": 8367.19,
+      "penetrationEstimatedPnl": -149.26,
+      "penetrationPnlError": 29.48
+    }
   },
   "latestOfficialSnapshot": {
-    "date": "2026-08-12",
-    "source": "official fund NAV via Eastmoney FundMNFInfo",
-    "trackedFundsAssets": 8543.75,
+    "date": "2026-08-13",
+    "source": "official fund NAV via FundMNFInfo / Eastmoney",
+    "trackedFundsAssets": 8365.01,
     "otherResidualAssetsAssumed": 2.18,
-    "fundAccountAssets": 8545.93,
-    "trackedFundsDailyPnl": 189.75,
-    "estimatedTotalAssetsUsingPriorCash": 40245.93,
-    "estimatedTotalPnlUsingPriorCash": -9754.07,
-    "estimatedTotalReturnPctUsingPriorCash": -19.5081,
-    "cashCaveat": "现金31700元仍为此前估算，因此总资产/总盈亏仍是估算；基金端采用8/12最终官方净值。"
+    "fundAccountAssets": 8367.19,
+    "trackedFundsDailyPnl": -178.74,
+    "estimatedTotalAssetsUsingPriorCash": 40067.19,
+    "estimatedTotalPnlUsingPriorCash": -9932.81,
+    "estimatedTotalReturnPctUsingPriorCash": -19.8656,
+    "cashCaveat": "现金31700元仍为此前估算，因此总资产/总盈亏仍是估算；基金端采用8/13最终官方净值。"
   },
   "estimatedSharesFromSnapshot": {
     "025500": 2018.0272,
     "024481": 1528.7420,
     "024975": 827.6090
   },
-  "note": "8/13 15:00养基宝收盘穿透约-149.26元，但8/13官方净值尚未发布。该值是第三方场内穿透估算，不等同于基金最终净值；现金31700元仍为此前估算。"
+  "note": "8/13 15:00养基宝收盘穿透约-149.26元；8/13晚间三只基金最终官方净值已发布并已完成对账。官方基金端当日实际盈亏为-178.74元，穿透估算与官方实际相差29.48元。现金31700元仍为此前估算。"
 }
