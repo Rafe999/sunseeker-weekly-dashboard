@@ -1,116 +1,26 @@
 {
-  "asOf": "2026-08-13T15:00:00+08:00",
+  "asOf": "2026-08-14T16:00:00+08:00",
   "source": "养基宝用户截图",
-  "status": "reconciled_with_official_nav",
+  "status": "pending_official_nav",
   "snapshotType": "close_estimate",
-  "accountAssets": 8545.97,
-  "intradayPenetrationPnl": -149.26,
-  "estimatedThroughAssets": 8396.71,
-  "trackedFundsAssets": 8543.76,
+  "accountAssets": 8367.21,
+  "intradayPenetrationPnl": 178.25,
+  "estimatedThroughAssets": 8545.46,
+  "trackedFundsAssets": 8365.00,
   "otherResidualAssets": 2.21,
-  "indexSnapshot": {
-    "name": "深证成指",
-    "level": 14318.02,
-    "changeValue": -96.41,
-    "changePct": -0.67
-  },
+  "indexSnapshot": {"name": "深证成指", "level": 14354.31, "changeValue": 64.87, "changePct": 0.45},
   "trackedFunds": [
-    {
-      "code": "025500",
-      "name": "东方阿尔法科技智选混合发起C",
-      "currentAssetAtSnapshot": 3341.86,
-      "linkedSector": "存储芯片",
-      "linkedSectorChangePct": -2.12,
-      "holdingPnl": -4621.36,
-      "holdingReturnPct": -58.03
-    },
-    {
-      "code": "024481",
-      "name": "财通品质甄选混合C",
-      "currentAssetAtSnapshot": 3064.51,
-      "linkedSector": "PCB",
-      "linkedSectorChangePct": -0.77,
-      "holdingPnl": -1758.41,
-      "holdingReturnPct": -36.46
-    },
-    {
-      "code": "024975",
-      "name": "华泰柏瑞上证科创板半导体材料设备主题ETF发起式联接C",
-      "currentAssetAtSnapshot": 2137.39,
-      "linkedSector": "科创半导材料",
-      "linkedSectorChangePct": -2.74,
-      "holdingPnl": -794.55,
-      "holdingReturnPct": -27.10
-    }
+    {"code": "025500", "name": "东方阿尔法科技智选混合发起C", "currentAssetAtSnapshot": 3242.37, "linkedSector": "存储芯片", "linkedSectorChangePct": 2.58, "holdingPnl": -4720.85, "holdingReturnPct": -59.28},
+    {"code": "024481", "name": "财通品质甄选混合C", "currentAssetAtSnapshot": 3038.07, "linkedSector": "PCB", "linkedSectorChangePct": 2.14, "holdingPnl": -1784.85, "holdingReturnPct": -37.01},
+    {"code": "024975", "name": "华泰柏瑞上证科创板半导体材料设备主题ETF发起式联接C", "currentAssetAtSnapshot": 2084.58, "linkedSector": "科创半导材料", "linkedSectorChangePct": 0.81, "holdingPnl": -847.36, "holdingReturnPct": -28.90}
   ],
-  "additionalSectorSnapshot": {
-    "CPO": -0.07
-  },
-  "finalOfficialReconciliation": {
-    "date": "2026-08-13",
-    "trackedFundsFinalAssets": 8365.01,
-    "trackedFundsActualDailyPnl": -178.74,
-    "finalFundAccountAssetsIncludingResidual": 8367.19,
-    "penetrationEstimatedPnl": -149.26,
-    "penetrationPnlError": 29.48
-  },
+  "additionalSectorSnapshot": {"CPO": 2.49},
+  "finalOfficialReconciliation": null,
   "history": [
-    {
-      "asOf": "2026-08-13T15:00:00+08:00",
-      "accountAssets": 8545.97,
-      "intradayPenetrationPnl": -149.26,
-      "estimatedThroughAssets": 8396.71,
-      "indexChangePct": -0.67,
-      "sectors": {"CPO": -0.07, "PCB": -0.77, "storage": -2.12, "semiMaterials": -2.74},
-      "status": "reconciled_with_official_nav",
-      "finalOfficialReconciliation": {
-        "date": "2026-08-13",
-        "trackedFundsFinalAssets": 8365.01,
-        "trackedFundsActualDailyPnl": -178.74,
-        "finalFundAccountAssetsIncludingResidual": 8367.19,
-        "penetrationEstimatedPnl": -149.26,
-        "penetrationPnlError": 29.48
-      }
-    },
-    {
-      "asOf": "2026-08-13T14:47:00+08:00",
-      "accountAssets": 8545.97,
-      "intradayPenetrationPnl": -81.85,
-      "estimatedThroughAssets": 8464.12,
-      "indexChangePct": -0.62,
-      "sectors": {"CPO": 0.60, "PCB": -0.13, "storage": -1.26, "semiMaterials": -1.90},
-      "status": "intraday_estimate"
-    },
-    {
-      "asOf": "2026-08-12T17:33:00+08:00",
-      "accountAssets": 8356.18,
-      "intradayPenetrationPnl": 182.93,
-      "estimatedThroughAssets": 8539.11,
-      "status": "reconciled_with_official_nav",
-      "finalOfficialReconciliation": {
-        "date": "2026-08-12",
-        "trackedFundsFinalAssets": 8543.75,
-        "trackedFundsActualDailyPnl": 189.75,
-        "finalFundAccountAssetsIncludingResidual": 8545.93,
-        "penetrationEstimatedPnl": 182.93,
-        "penetrationPnlError": -6.82
-      }
-    },
-    {
-      "asOf": "2026-08-11T17:24:55+08:00",
-      "accountAssets": 8424.15,
-      "intradayPenetrationPnl": -89.59,
-      "estimatedThroughAssets": 8334.56,
-      "status": "reconciled_with_official_nav",
-      "finalOfficialReconciliation": {
-        "date": "2026-08-11",
-        "trackedFundsFinalAssets": 8354.00,
-        "trackedFundsActualDailyPnl": -67.99,
-        "finalFundAccountAssetsIncludingResidual": 8356.17,
-        "penetrationEstimatedPnl": -89.59,
-        "penetrationPnlError": -21.60
-      }
-    }
+    {"asOf": "2026-08-14T16:00:00+08:00", "accountAssets": 8367.21, "intradayPenetrationPnl": 178.25, "estimatedThroughAssets": 8545.46, "indexChangePct": 0.45, "sectors": {"CPO": 2.49, "PCB": 2.14, "storage": 2.58, "semiMaterials": 0.81}, "status": "pending_official_nav", "note": "8/14养基宝收盘穿透估算，等待基金官方净值确认。"},
+    {"asOf": "2026-08-13T15:00:00+08:00", "accountAssets": 8545.97, "intradayPenetrationPnl": -149.26, "estimatedThroughAssets": 8396.71, "indexChangePct": -0.67, "sectors": {"CPO": -0.07, "PCB": -0.77, "storage": -2.12, "semiMaterials": -2.74}, "status": "reconciled_with_official_nav", "finalOfficialReconciliation": {"date": "2026-08-13", "trackedFundsFinalAssets": 8365.01, "trackedFundsActualDailyPnl": -178.74, "finalFundAccountAssetsIncludingResidual": 8367.19, "penetrationEstimatedPnl": -149.26, "penetrationPnlError": 29.48}},
+    {"asOf": "2026-08-12T17:33:00+08:00", "accountAssets": 8356.18, "intradayPenetrationPnl": 182.93, "estimatedThroughAssets": 8539.11, "status": "reconciled_with_official_nav", "finalOfficialReconciliation": {"date": "2026-08-12", "trackedFundsFinalAssets": 8543.75, "trackedFundsActualDailyPnl": 189.75, "finalFundAccountAssetsIncludingResidual": 8545.93, "penetrationEstimatedPnl": 182.93, "penetrationPnlError": -6.82}},
+    {"asOf": "2026-08-11T17:24:55+08:00", "accountAssets": 8424.15, "intradayPenetrationPnl": -89.59, "estimatedThroughAssets": 8334.56, "status": "reconciled_with_official_nav", "finalOfficialReconciliation": {"date": "2026-08-11", "trackedFundsFinalAssets": 8354.00, "trackedFundsActualDailyPnl": -67.99, "finalFundAccountAssetsIncludingResidual": 8356.17, "penetrationEstimatedPnl": -89.59, "penetrationPnlError": -21.60}}
   ],
-  "note": "8/13 15:00养基宝收盘穿透估算：CPO -0.07%、PCB -0.77%、存储芯片 -2.12%、科创半导材料 -2.74%、深证成指 -0.67%，场内穿透 -149.26元。晚间官方净值发布后，8/13基金端实际盈亏为-178.74元，二者相差29.48元；最终实际以基金官方净值为准。"
+  "note": "8/14 16:00养基宝收盘穿透估算：存储芯片 +2.58%、CPO +2.49%、PCB +2.14%、科创半导材料 +0.81%、深证成指 +0.45%，场内穿透 +178.25元。当前仍为第三方穿透估算，等待8/14基金官方净值后再写入最终实际。"
 }
