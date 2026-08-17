@@ -7,42 +7,45 @@
   "baselineInvested": 8300,
   "currency": "CNY",
   "latestThirdPartySnapshot": {
-    "asOf": "2026-08-13T15:00:00+08:00",
+    "asOf": "2026-08-14T16:00:00+08:00",
     "source": "养基宝用户截图",
-    "fundAccountAssets": 8545.97,
-    "intradayPenetrationPnl": -149.26,
-    "estimatedThroughFundAssets": 8396.71,
-    "estimatedTotalAssetsUsingPriorCash": 40096.71,
-    "estimatedTotalPnlUsingPriorCash": -9903.29,
-    "estimatedTotalReturnPctUsingPriorCash": -19.8066,
-    "trackedFundsAssets": 8543.76,
+    "fundAccountAssets": 8367.21,
+    "intradayPenetrationPnl": 178.25,
+    "estimatedThroughFundAssets": 8545.46,
+    "trackedFundsAssets": 8365.00,
     "otherResidualAssets": 2.21,
     "status": "reconciled_with_official_nav",
     "finalOfficialReconciliation": {
-      "date": "2026-08-13",
-      "trackedFundsFinalAssets": 8365.01,
-      "trackedFundsActualDailyPnl": -178.74,
-      "finalFundAccountAssetsIncludingResidual": 8367.19,
-      "penetrationEstimatedPnl": -149.26,
-      "penetrationPnlError": 29.48
+      "date": "2026-08-14",
+      "trackedFundsFinalAssets": 8551.91,
+      "trackedFundsActualDailyPnl": 186.90,
+      "finalFundAccountAssetsIncludingResidual": 8554.09,
+      "penetrationEstimatedPnl": 178.25,
+      "penetrationPnlError": -8.65
     }
   },
   "latestOfficialSnapshot": {
-    "date": "2026-08-13",
+    "date": "2026-08-14",
     "source": "official fund NAV via FundMNFInfo / Eastmoney",
-    "trackedFundsAssets": 8365.01,
+    "trackedFundsAssets": 8551.91,
     "otherResidualAssetsAssumed": 2.18,
-    "fundAccountAssets": 8367.19,
-    "trackedFundsDailyPnl": -178.74,
-    "estimatedTotalAssetsUsingPriorCash": 40067.19,
-    "estimatedTotalPnlUsingPriorCash": -9932.81,
-    "estimatedTotalReturnPctUsingPriorCash": -19.8656,
-    "cashCaveat": "现金31700元仍为此前估算，因此总资产/总盈亏仍是估算；基金端采用8/13最终官方净值。"
+    "fundAccountAssets": 8554.09,
+    "trackedFundsDailyPnl": 186.90,
+    "estimatedTotalAssetsUsingPriorCash": 40254.09,
+    "estimatedTotalPnlUsingPriorCash": -9745.91,
+    "estimatedTotalReturnPctUsingPriorCash": -19.4918,
+    "cashCaveat": "现金31700元仍为此前估算，因此总资产/总盈亏仍是估算；基金端采用8/14最终官方净值。"
   },
   "estimatedSharesFromSnapshot": {
     "025500": 2018.0272,
     "024481": 1528.7420,
     "024975": 827.6090
   },
-  "note": "8/13 15:00养基宝收盘穿透约-149.26元；8/13晚间三只基金最终官方净值已发布并已完成对账。官方基金端当日实际盈亏为-178.74元，穿透估算与官方实际相差29.48元。现金31700元仍为此前估算。"
+  "history": [
+    {"date":"2026-08-11","trackedFundsFinalAssets":8354.00,"trackedFundsActualDailyPnl":-67.99,"finalFundAccountAssetsIncludingResidual":8356.17},
+    {"date":"2026-08-12","trackedFundsFinalAssets":8543.75,"trackedFundsActualDailyPnl":189.75,"finalFundAccountAssetsIncludingResidual":8545.93},
+    {"date":"2026-08-13","trackedFundsFinalAssets":8365.01,"trackedFundsActualDailyPnl":-178.74,"finalFundAccountAssetsIncludingResidual":8367.19},
+    {"date":"2026-08-14","trackedFundsFinalAssets":8551.91,"trackedFundsActualDailyPnl":186.90,"finalFundAccountAssetsIncludingResidual":8554.09}
+  ],
+  "note": "8/14养基宝收盘穿透估算+178.25元；8/14三只基金官方实际合计+186.90元，估算少计8.65元。现金31700元仍为此前估算。"
 }
