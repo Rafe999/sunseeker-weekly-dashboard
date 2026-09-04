@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>准爸爸孕期营养与照护总看板</title>
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--ink:#1f2d3d;--muted:#667085;--line:#e5e7eb;--blue:#2563eb;--green:#16a34a;--amber:#d97706;--red:#dc2626;--pink:#db2777;--purple:#7c3aed}*{box-sizing:border-box}body{margin:0;font-family:Inter,"PingFang SC","Microsoft YaHei",Arial,sans-serif;background:var(--bg);color:var(--ink)}.wrap{max-width:1480px;margin:auto;padding:20px}.hero{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;background:linear-gradient(135deg,#eef6ff,#fff5f8);border:1px solid #dbe8fb;border-radius:18px;padding:22px;margin-bottom:16px}.hero h1{margin:0 0 8px;font-size:28px}.hero p{margin:4px 0;color:var(--muted);line-height:1.6}.privacy{max-width:450px;background:#fff;border:1px solid #fed7aa;border-radius:12px;padding:12px 14px;color:#92400e;font-size:13px;line-height:1.55}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}.kpi{grid-column:span 3}.span4{grid-column:span 4}.span6{grid-column:span 6}.span8{grid-column:span 8}.span12{grid-column:span 12}.kpi .label{font-size:13px;color:var(--muted)}.kpi .value{font-size:26px;font-weight:800;margin-top:6px}.kpi .sub{font-size:12px;color:var(--muted);margin-top:5px}h2{font-size:18px;margin:0 0 12px}h3{font-size:15px;margin:14px 0 8px}.row{display:flex;gap:10px;flex-wrap:wrap}.field{flex:1;min-width:145px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.field input,.field select{width:100%;padding:10px 11px;border:1px solid #d0d5dd;border-radius:10px;background:#fff;font-size:14px}.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:700;cursor:pointer}.btn.secondary{background:#475467}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tab{border:1px solid #d0d5dd;background:#fff;padding:8px 12px;border-radius:999px;cursor:pointer}.tab.active{background:#eff6ff;color:#1d4ed8;border-color:#93c5fd}.month-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.month{border:1px solid var(--line);border-radius:12px;padding:12px}.month b{display:block;margin-bottom:4px}.tag{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700;margin-right:5px}.tgreen{background:#dcfce7;color:#166534}.tamber{background:#fef3c7;color:#92400e}.tred{background:#fee2e2;color:#991b1b}.tblue{background:#dbeafe;color:#1e40af}.tpurple{background:#ede9fe;color:#5b21b6}.progress{height:10px;background:#eef2f6;border-radius:999px;overflow:hidden}.progress>i{display:block;height:100%;background:var(--green);width:0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{background:#f9fafb;color:#475467}.meal{font-weight:700;color:#1d4ed8}.warn{color:#991b1b}.ok{color:#166534}.checklist label{display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed #e5e7eb}.checklist input{margin-top:3px}.exercise-card{border-left:4px solid var(--purple)}.metric{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:7px 0;border-bottom:1px dashed #eee}.mini{font-size:12px;color:var(--muted);line-height:1.55}.notice{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.55}.danger{background:#fef2f2;border-color:#fecaca;color:#991b1b}.footer{color:#98a2b3;font-size:12px;text-align:center;padding:18px 0}.hidden{display:none}.weight-row{display:grid;grid-template-columns:120px 1fr 100px;gap:8px;margin:7px 0}.weight-row input{padding:8px;border:1px solid #d0d5dd;border-radius:8px}@media(max-width:980px){.kpi,.span4,.span6,.span8{grid-column:span 12}.month-grid{grid-template-columns:1fr 1fr}.hero{flex-direction:column}}@media(max-width:620px){.month-grid{grid-template-columns:1fr}.wrap{padding:10px}.kpi{grid-column:span 6}.hero h1{font-size:23px}}
+</style>
+</head>
+<body><div class="wrap">
+<section class="hero"><div><h1>准爸爸孕期营养与照护总看板</h1><p>把孕周、每月注意事项、饮食、周末菜谱、运动、体重与 Todo 放在一张看板里持续追踪。</p><p>医学口径：孕周从末次月经第一天开始；实际孕周与预产期以后续产科/早孕超声校正为准。</p></div><div class="privacy"><b>隐私设计</b><br>本页面托管在公开 GitHub Pages，但<strong>不在代码中保存个人孕期日期、身高、体重</strong>。你在页面中填写的数据只保存在当前浏览器 localStorage 中，不会提交回 GitHub。</div></section>
+
+<div class="grid">
+<section class="card span12"><h2>① 基础信息｜仅本机保存</h2><div class="row"><div class="field"><label>末次月经第一天</label><input type="date" id="lmp"></div><div class="field"><label>孕前身高 cm</label><input type="number" id="height" min="130" max="200" step="0.1" placeholder="例如 165"></div><div class="field"><label>孕前体重 kg</label><input type="number" id="preWeight" min="30" max="150" step="0.1" placeholder="例如 50"></div><div class="field"><label>当前体重 kg</label><input type="number" id="currentWeight" min="30" max="180" step="0.1"></div><div class="field" style="align-self:end"><button class="btn" id="saveProfile">保存并刷新</button></div></div></section>
+
+<section class="card kpi"><div class="label">当前孕周</div><div class="value" id="weekKpi">—</div><div class="sub" id="trimesterKpi">填写末次月经后自动计算</div></section>
+<section class="card kpi"><div class="label">预计预产期</div><div class="value" id="eddKpi">—</div><div class="sub">LMP + 280 天，最终以医生校正为准</div></section>
+<section class="card kpi"><div class="label">孕前 BMI</div><div class="value" id="bmiKpi">—</div><div class="sub" id="bmiNote">填写身高体重后自动计算</div></section>
+<section class="card kpi"><div class="label">本周运动完成</div><div class="value" id="exerciseKpi">0 / 150</div><div class="sub">分钟｜健康、无禁忌孕妇的一般目标</div></section>
+
+<section class="card span8"><h2>② 每月注意事项与禁忌</h2><div class="month-grid" id="monthGrid"></div></section>
+<section class="card span4"><h2>③ 本月丈夫 Todo</h2><div class="checklist" id="todoList"></div><div class="notice" style="margin-top:10px">如出现明显阴道流血、持续/明显腹痛、晕厥等异常，按产科医生或医院指引及时就医，不用看板替代医疗判断。</div></section>
+
+<section class="card span12 exercise-card"><h2>④ 孕期运动模块｜按孕周自动切换</h2><div class="row"><div class="span4" style="flex:1;min-width:260px"><h3 id="exerciseTitle">当前建议</h3><div id="exercisePlan" class="mini"></div></div><div style="flex:1.2;min-width:300px"><h3>本周运动记录</h3><div class="row"><div class="field"><label>日期</label><input type="date" id="exDate"></div><div class="field"><label>项目</label><select id="exType"><option>散步/快走</option><option>孕妇瑜伽</option><option>游泳/水中运动</option><option>固定自行车</option><option>轻力量训练</option><option>拉伸/活动度</option></select></div><div class="field"><label>分钟</label><input id="exMin" type="number" min="1" max="180" value="30"></div><div class="field" style="align-self:end"><button class="btn" id="addExercise">添加</button></div></div><div class="progress" style="margin:12px 0"><i id="exerciseBar"></i></div><div id="exerciseLog" class="mini"></div></div></div>
+<div class="notice danger" style="margin-top:12px"><b>立即停止运动并联系产科医生的警示：</b>阴道流血、头晕/晕厥、运动前气短、胸痛、头痛、影响平衡的肌无力、小腿疼痛或肿胀、规律且疼痛的宫缩、阴道大量液体流出/漏液。孕期有医疗或产科并发症时，运动方案应由医生个体化。</div></section>
+
+<section class="card span6"><h2>⑤ 每月运动建议</h2><div class="table-wrap"><table><thead><tr><th>阶段</th><th>推荐</th><th>频率/强度</th><th>重点调整</th></tr></thead><tbody>
+<tr><td>孕早期 0–13+6周</td><td>散步/快走、孕妇瑜伽、游泳、固定自行车、轻力量</td><td>从可耐受量开始，逐步向每周150分钟中等强度靠近；“能正常说话、不能唱歌”</td><td>孕吐/疲劳明显时缩短单次时长；避免过热、脱水</td></tr>
+<tr><td>孕中期 14–27+6周</td><td>快走、游泳、固定自行车、改良瑜伽/普拉提、弹力带</td><td>20–30分钟/次，多数天活动；量力而行</td><td>避免长时间平躺仰卧；重心变化后减少跌倒风险项目</td></tr>
+<tr><td>孕晚期 28周+</td><td>散步、游泳、孕妇瑜伽、轻力量、活动度练习</td><td>以舒适为主，可拆成10–20分钟小段</td><td>不追求强度；注意平衡、骨盆/腰背舒适度与补水</td></tr>
+</tbody></table></div><p class="mini">一般情况下，ACOG/CDC 建议健康、无禁忌孕妇每周至少150分钟中等强度有氧活动；如果孕前很少运动，可从每天5分钟开始逐步增加。</p></section>
+
+<section class="card span6"><h2>⑥ 运动禁忌与不推荐项目</h2><div class="table-wrap"><table><thead><tr><th>类型</th><th>不建议/避免</th><th>原因</th></tr></thead><tbody>
+<tr><td>碰撞</td><td>拳击、足球、篮球等可能撞击腹部的项目</td><td>外伤风险</td></tr>
+<tr><td>跌倒</td><td>滑雪、骑马、冲浪、越野骑行、体操</td><td>孕期重心变化，跌倒风险升高</td></tr>
+<tr><td>高温</td><td>Hot Yoga / Hot Pilates、高温环境长时间运动</td><td>过热、脱水风险</td></tr>
+<tr><td>潜水</td><td>水肺潜水</td><td>不适合孕期</td></tr>
+<tr><td>体位</td><td>孕中后期长时间仰卧训练</td><td>可能影响静脉回流并引起不适</td></tr>
+</tbody></table></div></section>
+
+<section class="card span8"><h2>⑦ 周末菜谱｜按月份切换</h2><div class="tabs" id="mealTabs"></div><div class="table-wrap"><table><thead><tr><th>时间</th><th>主菜</th><th>搭配</th><th>目的</th></tr></thead><tbody id="mealBody"></tbody></table></div></section>
+<section class="card span4"><h2>⑧ 推荐食物与食品安全</h2><h3 class="ok">优先轮换</h3><p class="mini">鸡蛋、牛肉/瘦猪肉/鸡肉、豆腐、巴氏奶/酸奶；低汞鱼虾；西兰花、菠菜、番茄、菌菇、山药、南瓜；大米+杂粮/玉米/红薯；苹果、橙子、猕猴桃、梨等。</p><h3 class="warn">重点避免</h3><p class="mini">酒精；生/半生肉蛋海鲜；生腌/醉蟹醉虾；未巴氏杀菌奶制品；未洗净果蔬；高汞鱼（如鲨鱼、剑鱼、大眼金枪鱼、马林鱼等）。</p><div class="notice">鱼类一般建议每周2–3份低汞鱼，总计约227–340g。实际饮食如有贫血、血糖、甲状腺、严重孕吐等特殊情况，以产科/营养科建议为准。</div></section>
+
+<section class="card span6"><h2>⑨ 体重追踪</h2><div class="row"><div class="field"><label>日期</label><input type="date" id="wtDate"></div><div class="field"><label>体重 kg</label><input type="number" id="wtKg" step="0.1"></div><div class="field" style="align-self:end"><button class="btn" id="addWeight">记录</button></div></div><div id="weightLog" style="margin-top:12px"></div><div id="weightGuidance" class="notice" style="margin-top:12px">填写孕前身高体重后显示参考提示。</div></section>
+<section class="card span6"><h2>⑩ 产检与生活记录</h2><div class="field"><label>本周症状/问题/下次产检要问医生的事项</label><input id="notes" placeholder="例如：恶心、食欲、睡眠、运动后感受、要问医生的问题"></div><button class="btn secondary" id="saveNotes" style="margin-top:10px">保存本机备注</button><p class="mini" id="notesSaved"></p></section>
+</div>
+<div class="footer">本看板用于家庭规划与记录，不替代产科医生诊断、处方或个体化营养/运动建议。资料依据 ACOG、CDC、FDA/EPA 的一般孕期健康建议整理。</div>
+</div>
+<script>
+const $=id=>document.getElementById(id), DAY=86400000;
+const store={get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
+const months=[
+{m:'9月',w:'孕4–7周',focus:'清淡易消化，缓解孕吐',note:'确认早孕就诊安排；叶酸/孕期维生素按医生建议；少量多餐。',ban:'酒精、生食/半生食、擅自用药、过度高温。',todo:['确认产科医院与早孕检查','核对叶酸/孕期维生素','建立食品安全规则','记录孕吐、腹痛、出血等情况']},
+{m:'10月',w:'孕8–12周',focus:'继续应对孕吐，保证蛋白质',note:'建档资料、NT/产前筛查按医院安排；疲劳时运动拆短。',ban:'剧烈跳跃、过热、空腹长时间运动。',todo:['准备建档资料','确认NT/筛查预约','整理医生问题清单']},
+{m:'11月',w:'孕13–16周',focus:'铁、钙、蛋白质',note:'多数人食欲改善；保持规律饮食和适量运动。',ban:'盲目补铁补钙；高跌倒风险运动。',todo:['家庭预算V1','稳定每周运动习惯','开始记录体重趋势']},
+{m:'12月',w:'孕17–20周',focus:'低汞鱼、铁钙、优质蛋白',note:'关注胎动变化；系统超声/大排畸按医院预约。',ban:'高汞鱼；孕中期开始避免长时间仰卧训练。',todo:['确认系统超声预约','研究月子方案','安排每周2–3份低汞鱼']},
+{m:'1月',w:'孕21–25周',focus:'防贫血、防便秘',note:'纤维、奶、蛋白质；按医嘱安排糖代谢/血常规等。',ban:'高糖高油“吃两个人的量”；盲目控制体重。',todo:['确认糖代谢/血常规安排','敲定月子方案','检查陪产假政策']},
+{m:'2月',w:'孕26–29周',focus:'控精制糖，保持优质蛋白',note:'进入/接近孕晚期，运动以稳定、低跌倒风险为主。',ban:'高风险户外骑行、追求速度/强度。',todo:['核心母婴用品清单','每周运动150分钟分段完成','继续体重追踪']},
+{m:'3月',w:'孕30–33周',focus:'少量多餐，减轻胃胀',note:'准备待产包、证件、交通路线；关注胎动和产检安排。',ban:'久站久走、远距离无预案出行。',todo:['准备待产包','规划医院路线','确认应急联系人']},
+{m:'4月',w:'孕34–38周',focus:'少油少盐，均衡营养',note:'产检更频繁；运动以舒适为主，可拆成10–20分钟。',ban:'自行催产、过度运动、临近预产期远行。',todo:['减少出差','完善陪产安排','住院证件与物品复核']},
+{m:'5月',w:'临产期',focus:'正常饮食，好消化',note:'保持待产状态，识别规律宫缩、破水等临产信号。',ban:'自行用药、拖延明显临产/异常信号。',todo:['随时可出发','确认住院路线','安排产后家务与照护分工']}
+];
+const meals={
+'9月':[['周六午','番茄牛腩','西兰花+米饭','蛋白质+铁'],['周六晚','清蒸鲈鱼','生菜+冬瓜汤','低汞鱼+清淡'],['周日午','山药炖鸡','青菜+玉米饭','蛋白质+易消化'],['周日晚','虾仁蒸蛋','菠菜+小米南瓜粥','清淡+优质蛋白']],
+'10月':[['周六午','清蒸鳕鱼','西兰花胡萝卜+杂粮饭','低汞鱼'],['周六晚','番茄牛肉','油麦菜+蛋花汤','铁+蛋白质'],['周日午','香菇炖鸡','芥蓝+玉米','蛋白质'],['周日晚','虾仁豆腐','菠菜+小米粥','清淡']],
+'11月':[['周六午','土豆炖牛肉','西兰花+米饭','铁+蛋白质'],['周六晚','全熟三文鱼','菌菇豆腐+青菜','DHA来源+钙'],['周日午','萝卜排骨汤','芹菜牛肉+杂粮饭','铁+蛋白质'],['周日晚','虾仁蒸蛋','菠菜+红薯','蛋白+纤维']],
+'12月':[['周六午','三文鱼','番茄蛋+西兰花+杂粮饭','鱼类+维生素'],['周六晚','牛肉炖胡萝卜','青菜+豆腐汤','铁+蛋白'],['周日午','清蒸鲈鱼','山药排骨汤+菠菜','低汞鱼+铁'],['周日晚','虾仁豆腐','鸡蛋羹+南瓜','蛋白+钙']],
+'1月':[['周六午','番茄牛腩','芹菜木耳+玉米饭','铁+纤维'],['周六晚','清蒸鱼','菠菜豆腐+冬瓜汤','低汞鱼+钙'],['周日午','鸡腿炖香菇','西兰花+红薯','蛋白+纤维'],['周日晚','虾仁炒蛋','菌菇青菜+小米粥','清淡']],
+'2月':[['周六午','清蒸鲈鱼','芦笋虾仁+杂粮饭','蛋白+低汞鱼'],['周六晚','冬瓜排骨汤','西兰花+豆腐','清淡'],['周日午','萝卜炖牛肉','青菜+玉米饭','铁+蛋白'],['周日晚','虾仁鸡蛋','菠菜+菌菇汤','蛋白+纤维']],
+'3月':[['周六午','三文鱼','菌菇豆腐+西兰花','优质蛋白'],['周六晚','山药鸡汤','菠菜鸡蛋+南瓜','少量多餐'],['周日午','牛肉炖萝卜','芥蓝+米饭','铁+蛋白'],['周日晚','清蒸鱼','虾仁蒸蛋+冬瓜汤','清淡']],
+'4月':[['周六午','清蒸鲈鱼','番茄豆腐+青菜','清淡'],['周六晚','山药鸡汤','蒸蛋+南瓜','易消化'],['周日午','萝卜牛肉','西兰花+米饭','蛋白+铁'],['周日晚','虾仁豆腐','菌菇汤+青菜','轻负担']],
+'5月':[['周六午','清蒸鱼','番茄炒蛋+青菜+米饭','均衡'],['周六晚','鸡肉菌菇汤','虾仁豆腐+南瓜','易消化'],['周日午','萝卜炖牛肉','西兰花+杂粮饭','蛋白+铁'],['周日晚','鲈鱼','鸡蛋羹+青菜汤','清淡']]
+};
+function localDate(d){return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)}
+function fmt(d){return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`}
+function getProfile(){return store.get('prenatalProfile',{})}
+function calc(){const p=getProfile();if(p.lmp){const l=new Date(p.lmp+'T12:00:00'),now=new Date(),days=Math.floor((now-l)/DAY);if(days>=0){const w=Math.floor(days/7),d=days%7;$('weekKpi').textContent=`${w}周${d}天`;$('trimesterKpi').textContent=w<14?'孕早期':w<28?'孕中期':'孕晚期';const edd=new Date(l.getTime()+280*DAY);$('eddKpi').textContent=fmt(edd);updateExercise(w);renderCurrentMonth(l,w)}}if(p.height&&p.preWeight){const bmi=p.preWeight/((p.height/100)**2);$('bmiKpi').textContent=bmi.toFixed(1);const cat=bmi<18.5?'偏低':bmi<25?'正常':bmi<30?'偏高':'肥胖范围';$('bmiNote').textContent=`孕前BMI：${cat}`;$('weightGuidance').innerHTML=bmi<18.5?'<b>孕前 BMI < 18.5：</b>属于偏低范围。单胎妊娠常见总增重参考为约12.5–18 kg（28–40 lb），但应由产科结合胎儿生长、孕吐和实际体重趋势确认；不要用运动来限制必要增重。':bmi<25?'<b>孕前 BMI 18.5–24.9：</b>通常属正常范围。单胎妊娠常见总增重参考约11.5–16 kg（25–35 lb），按产科随访调整。':'体重增重目标需要结合孕前BMI由产科医生个体化确定。';}}
+function currentMonthIndex(lmp,w){const now=new Date();return Math.max(0,Math.min(8,now.getMonth()-8 + (now.getFullYear()-2026)*12))}
+function renderCurrentMonth(lmp,w){let idx=currentMonthIndex(lmp,w);document.querySelectorAll('.month').forEach((x,i)=>x.style.outline=i===idx?'2px solid #60a5fa':'none');renderTodo(idx);renderMeals(months[idx]?.m||'9月');}
+function renderMonths(){const g=$('monthGrid');g.innerHTML='';months.forEach((x,i)=>{const el=document.createElement('div');el.className='month';el.innerHTML=`<b>${x.m}｜${x.w}</b><span class="tag tblue">${x.focus}</span><h3>注意</h3><div class="mini">${x.note}</div><h3 class="warn">禁忌/避免</h3><div class="mini">${x.ban}</div>`;g.appendChild(el)})}
+function renderTodo(i){const box=$('todoList');box.innerHTML='';(months[i]?.todo||months[0].todo).forEach((x,j)=>{const k=`todo-${i}-${j}`,checked=store.get(k,false);const lab=document.createElement('label');lab.innerHTML=`<input type="checkbox" ${checked?'checked':''}><span>${x}</span>`;lab.querySelector('input').addEventListener('change',e=>store.set(k,e.target.checked));box.appendChild(lab)})}
+function renderTabs(){const t=$('mealTabs');t.innerHTML='';months.forEach(x=>{const b=document.createElement('button');b.className='tab';b.textContent=x.m;b.addEventListener('click',()=>renderMeals(x.m));t.appendChild(b)})}
+function renderMeals(m){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.textContent===m));$('mealBody').innerHTML=(meals[m]||meals['9月']).map(r=>`<tr><td>${r[0]}</td><td class="meal">${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}
+function updateExercise(w){let title,html;if(w<14){title='孕早期｜先建立习惯，不追求强度';html='<b>推荐：</b>散步/快走、孕妇瑜伽、游泳、固定自行车、轻力量。<br><b>执行：</b>如果孕前运动少，可从5–10分钟/天起；状态好再逐步增加。孕吐或疲劳明显时，把30分钟拆成2–3段。<br><b>强度：</b>以“能正常说话、不能唱歌”为中等强度参考。'}else if(w<28){title='孕中期｜稳定有氧 + 轻力量';html='<b>推荐：</b>20–30分钟快走、游泳、固定自行车、改良孕妇瑜伽/普拉提、弹力带。<br><b>调整：</b>避免长时间仰卧；腹部增大后更重视平衡和防跌倒。<br><b>目标：</b>状态允许时累计接近150分钟/周。'}else{title='孕晚期｜舒适和安全优先';html='<b>推荐：</b>散步、游泳、孕妇瑜伽、轻力量和活动度练习。<br><b>执行：</b>可拆成10–20分钟小段，不以速度和出汗量为目标。<br><b>调整：</b>避免跌倒风险、过热和脱水；任何不适及时停止。'}$('exerciseTitle').textContent=title;$('exercisePlan').innerHTML=html}
+function monday(d){const x=new Date(d),day=(x.getDay()+6)%7;x.setHours(0,0,0,0);x.setDate(x.getDate()-day);return x}
+function renderExercise(){const logs=store.get('exerciseLogs',[]),start=monday(new Date()),end=new Date(start.getTime()+7*DAY);const week=logs.filter(x=>{const d=new Date(x.date+'T12:00:00');return d>=start&&d<end}),mins=week.reduce((a,b)=>a+Number(b.min||0),0);$('exerciseKpi').textContent=`${mins} / 150`;$('exerciseBar').style.width=Math.min(100,mins/150*100)+'%';$('exerciseLog').innerHTML=week.length?week.map(x=>`${x.date} · ${x.type} · ${x.min}分钟`).join('<br>'):'本周尚未记录运动。'}
+function renderWeight(){const logs=store.get('weightLogs',[]).slice().sort((a,b)=>a.date.localeCompare(b.date));$('weightLog').innerHTML=logs.length?logs.slice(-8).map(x=>`<div class="metric"><span>${x.date}</span><b>${Number(x.kg).toFixed(1)} kg</b></div>`).join(''):'还没有体重记录。'}
+$('saveProfile').addEventListener('click',()=>{store.set('prenatalProfile',{lmp:$('lmp').value,height:Number($('height').value)||null,preWeight:Number($('preWeight').value)||null,currentWeight:Number($('currentWeight').value)||null});calc()});
+$('addExercise').addEventListener('click',()=>{const a=store.get('exerciseLogs',[]);a.push({date:$('exDate').value||localDate(new Date()),type:$('exType').value,min:Number($('exMin').value)||0});store.set('exerciseLogs',a);renderExercise()});
+$('addWeight').addEventListener('click',()=>{if(!$('wtKg').value)return;const a=store.get('weightLogs',[]);a.push({date:$('wtDate').value||localDate(new Date()),kg:Number($('wtKg').value)});store.set('weightLogs',a);renderWeight()});
+$('saveNotes').addEventListener('click',()=>{store.set('prenatalNotes',$('notes').value);$('notesSaved').textContent='已保存在当前浏览器。'});
+function init(){renderMonths();renderTabs();const p=getProfile();$('lmp').value=p.lmp||'';$('height').value=p.height||'';$('preWeight').value=p.preWeight||'';$('currentWeight').value=p.currentWeight||'';$('exDate').value=localDate(new Date());$('wtDate').value=localDate(new Date());$('notes').value=store.get('prenatalNotes','');renderMeals('9月');renderTodo(0);renderExercise();renderWeight();calc()}
+init();
+</script>
+</body></html>
