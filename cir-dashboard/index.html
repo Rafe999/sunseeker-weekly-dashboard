@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIR 管理看板 · 本地安全查看器</title>
+<meta name="description" content="仅在浏览器本地加载 CIR HTML 报告，不上传内部数据。">
+<style>
+:root{--navy:#142539;--teal:#0a807a;--ink:#1c2e41;--muted:#637388;--line:#dce5ed;--bg:#f2f6fa}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;color:var(--ink)}
+header{background:linear-gradient(120deg,#142539 30%,#14524d);padding:22px max(26px,calc((100vw - 1260px)/2));color:#fff;display:flex;align-items:center;justify-content:space-between;gap:16px}
+header b{font-size:18px}header small{display:block;opacity:.72;font-size:11px;letter-spacing:.08em}header span{border:1px solid #87c5b8;padding:5px 11px;border-radius:50px;font-size:12px;color:#b5efe3}
+main{max-width:1260px;margin:auto;padding:33px 24px 60px}.intro{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:stretch}.card{border:1px solid var(--line);border-radius:14px;background:white;padding:28px;box-shadow:0 5px 20px #12304408}.eyebrow{font-size:11px;color:var(--teal);font-weight:800;letter-spacing:.14em}h1{font-size:28px;line-height:1.4;margin:9px 0}p{color:var(--muted);margin:8px 0 16px}label.upload{cursor:pointer;display:block;border:2px dashed #93bdbb;border-radius:14px;background:#f2faf9;text-align:center;padding:27px 16px;color:#25595a;transition:.15s}label.upload:hover,label.upload.dragover{background:#e5f6f3;border-color:#0e8e85}.upload strong{display:block;font-size:16px}.upload small{display:block;color:#68898c;margin-top:5px}input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}button{cursor:pointer;border:1px solid #cbd7e2;border-radius:8px;background:white;padding:8px 14px;color:var(--ink);font-weight:650}button[disabled]{cursor:not-allowed;opacity:.4}.control{display:flex;align-items:center;justify-content:space-between;gap:13px;padding:15px 0}.status{color:var(--muted);font-size:12px;overflow-wrap:anywhere}.status.ready{color:#15806f}.right p{font-size:13px;margin:8px 0}.right strong{display:block;font-size:13px}.check{padding:12px 0;border-bottom:1px solid #edf1f5}.check:last-child{border:0}.viewer{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:none}.viewerheader{padding:12px 16px;background:#eff4f7;display:flex;justify-content:space-between;gap:10px;align-items:center;font-weight:700;font-size:12px}iframe{width:100%;height:82vh;min-height:700px;border:0;background:white}.note{font-size:12px;color:#7b8998;margin-top:20px}.danger{color:#9e3e3e}code{font-family:Consolas,monospace;background:#eef3f7;border-radius:4px;padding:0 4px}.hidden{display:none}
+@media(max-width:850px){.intro{grid-template-columns:1fr}h1{font-size:23px}main{padding:20px 14px}header{padding:18px}header span{display:none}.card{padding:20px}iframe{min-height:520px}}
+</style></head>
+<body>
+<header><div><b>WAJXN / CIR · 查看入口</b><small>CONFIDENTIAL REPORT · LOCAL-ONLY VIEWER</small></div><span>GitHub 不保存业务数据</span></header>
+<main>
+<div class="intro">
+<section class="card">
+<div class="eyebrow">LOCAL FIRST · SECURE VIEW</div>
+<h1>打开 2026 CIR 管理看板</h1>
+<p>选择已下载的 <b>CIR_WAJXN_2026_Management_Dashboard.html</b>，即可在当前浏览器中查看完整的领导汇报看板、ASIN 数据与改善路线图。</p>
+<label class="upload" id="dropArea" for="fileInput" tabindex="0">
+<strong>选择或拖入本地 CIR 看板 HTML 文件</strong><small>文件只在您的浏览器内读取，不传到 GitHub、服务器或第三方</small>
+</label>
+<input type="file" accept=".html,text/html" id="fileInput">
+<div class="control"><span class="status" id="status" role="status">尚未选择报告文件</span><button id="reset" disabled>清除看板</button></div>
+</section>
+<section class="card right">
+<div class="eyebrow">INTERNAL SHARE WORKFLOW</div>
+<h1 style="font-size:20px">给领导的使用说明</h1>
+<div class="check"><strong>01 · 分享这个 GitHub Pages 页面链接</strong><p>此公开入口不包含任何 CIR、GCV、CU、ASIN 数据。</p></div>
+<div class="check"><strong>02 · 通过公司批准的内部渠道单独发送 HTML 报告</strong><p>报告内容包含 AVS 标注的 Confidential 信息，请仅发送给授权人员。</p></div>
+<div class="check"><strong>03 · 领导本地选择 HTML</strong><p>打开完整交互看板，可筛选 ASIN、调整目标情景，并通过报告内按钮打印 PDF。</p></div>
+</section>
+</div>
+<div class="viewer" id="viewPanel"><div class="viewerheader"><span>已加载 · 本地报告预览</span><button id="fullScreen">全屏查看</button></div><iframe id="dashboard" sandbox="allow-scripts allow-modals allow-downloads" title="CIR 机密数据本地预览"></iframe></div>
+<div class="note"><strong>隐私说明：</strong>本网页不包含分析数据、网络 API、跟踪脚本或第三方依赖；仅将您选择的 HTML 内容展示在本地沙箱框架内。公开链接本身<span class="danger">不能提供密码保护</span>，切勿把完整含数据的 HTML 直接提交到 Public 仓库。<br>如公司要求“打开链接即可直接看到数据且只有指定人员可见”，应改用经企业授权的访问控制系统，而非公开 GitHub Pages。</div>
+</main>
+<script>
+const fileInput=document.getElementById('fileInput');
+const dropArea=document.getElementById('dropArea');
+const status=document.getElementById('status');
+const panel=document.getElementById('viewPanel');
+const dashboard=document.getElementById('dashboard');
+const reset=document.getElementById('reset');
+const fullScreen=document.getElementById('fullScreen');
+async function loadFile(file){
+ if(!file)return;
+ if(!/\.html?$/i.test(file.name)){status.textContent='请使用 .html 文件';status.classList.remove('ready');return;}
+ try{
+  const html=await file.text();
+  if(!html.trim().startsWith('<') || !/<html[\s>]/i.test(html)){throw Error('文件格式不正确');}
+  dashboard.srcdoc=html;panel.style.display='block';status.textContent='已安全加载：'+file.name+'（'+(file.size/1024).toFixed(1)+' KB）';status.classList.add('ready');reset.disabled=false;
+  panel.scrollIntoView({behavior:'smooth',block:'start'});
+ }catch(e){status.textContent='读取失败：'+e.message;status.classList.remove('ready');}
+}
+fileInput.addEventListener('change',()=>loadFile(fileInput.files[0]));
+for (const eventName of ['dragenter','dragover'])dropArea.addEventListener(eventName,e=>{e.preventDefault();dropArea.classList.add('dragover')});
+for (const eventName of ['dragleave','drop'])dropArea.addEventListener(eventName,e=>{e.preventDefault();dropArea.classList.remove('dragover')});
+dropArea.addEventListener('drop',e=>loadFile(e.dataTransfer.files[0]));
+dropArea.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fileInput.click();}});
+reset.addEventListener('click',()=>{dashboard.removeAttribute('srcdoc');panel.style.display='none';fileInput.value='';status.textContent='尚未选择报告文件';status.classList.remove('ready');reset.disabled=true;});
+fullScreen.addEventListener('click',()=>{if(dashboard.requestFullscreen)dashboard.requestFullscreen();});
+</script>
+</body></html>
